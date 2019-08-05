@@ -9,53 +9,53 @@
 exports.getArtisticEvent = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = [ {
-  "date" : "2000-01-23",
-  "fact_sheet" : "fact_sheet",
-  "treated_by" : [ {
-    "date" : "2000-01-23",
-    "location" : "location",
-    "id" : 6,
-    "title" : "title"
-  }, {
-    "date" : "2000-01-23",
-    "location" : "location",
-    "id" : 6,
-    "title" : "title"
-  } ],
-  "location" : "location",
-  "id" : 0,
-  "abstract" : "abstract",
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "title" : "title",
-  "type" : "type"
-}, {
-  "date" : "2000-01-23",
-  "fact_sheet" : "fact_sheet",
-  "treated_by" : [ {
-    "date" : "2000-01-23",
-    "location" : "location",
-    "id" : 6,
-    "title" : "title"
-  }, {
-    "date" : "2000-01-23",
-    "location" : "location",
-    "id" : 6,
-    "title" : "title"
-  } ],
-  "location" : "location",
-  "id" : 0,
-  "abstract" : "abstract",
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "title" : "title",
-  "type" : "type"
-} ];
+//     examples['application/json'] = [ {
+//   "date" : "2000-01-23",
+//   "fact_sheet" : "fact_sheet",
+//   "treated_by" : [ {
+//     "date" : "2000-01-23",
+//     "location" : "location",
+//     "id" : 6,
+//     "title" : "title"
+//   }, {
+//     "date" : "2000-01-23",
+//     "location" : "location",
+//     "id" : 6,
+//     "title" : "title"
+//   } ],
+//   "location" : "location",
+//   "id" : 0,
+//   "abstract" : "abstract",
+//   "primary_photo" : {
+//     "id" : 6,
+//     "content" : [ "content", "content" ]
+//   },
+//   "title" : "title",
+//   "type" : "type"
+// }, {
+//   "date" : "2000-01-23",
+//   "fact_sheet" : "fact_sheet",
+//   "treated_by" : [ {
+//     "date" : "2000-01-23",
+//     "location" : "location",
+//     "id" : 6,
+//     "title" : "title"
+//   }, {
+//     "date" : "2000-01-23",
+//     "location" : "location",
+//     "id" : 6,
+//     "title" : "title"
+//   } ],
+//   "location" : "location",
+//   "id" : 0,
+//   "abstract" : "abstract",
+//   "primary_photo" : {
+//     "id" : 6,
+//     "content" : [ "content", "content" ]
+//   },
+//   "title" : "title",
+//   "type" : "type"
+// } ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
