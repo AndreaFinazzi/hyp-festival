@@ -1,5 +1,8 @@
 'use strict';
 
+var dataLayer = require("../utils/DataLayer");
+var db = dataLayer.database;
+var schema = dataLayer.schema;
 
 /**
  * get all Performers in the Festival
@@ -8,35 +11,7 @@
  **/
 exports.getPerformers = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "main_achievements" : "main_achievements",
-  "current_affiliations" : "current_affiliations",
-  "company_members" : "company_members",
-  "name" : "name",
-  "id" : 0,
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "type" : "type"
-}, {
-  "main_achievements" : "main_achievements",
-  "current_affiliations" : "current_affiliations",
-  "company_members" : "company_members",
-  "name" : "name",
-  "id" : 0,
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "type" : "type"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+      resolve(db.select().table(schema.tables.PERFORMER));
   });
 }
 
@@ -49,35 +24,7 @@ exports.getPerformers = function() {
  **/
 exports.getPerformersAtEvent = function(id_event) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "main_achievements" : "main_achievements",
-  "current_affiliations" : "current_affiliations",
-  "company_members" : "company_members",
-  "name" : "name",
-  "id" : 0,
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "type" : "type"
-}, {
-  "main_achievements" : "main_achievements",
-  "current_affiliations" : "current_affiliations",
-  "company_members" : "company_members",
-  "name" : "name",
-  "id" : 0,
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "type" : "type"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
       resolve();
-    }
   });
 }
 
@@ -90,24 +37,7 @@ exports.getPerformersAtEvent = function(id_event) {
  **/
 exports.getPerformersById = function(id_performer) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "main_achievements" : "main_achievements",
-  "current_affiliations" : "current_affiliations",
-  "company_members" : "company_members",
-  "name" : "name",
-  "id" : 0,
-  "primary_photo" : {
-    "id" : 6,
-    "content" : [ "content", "content" ]
-  },
-  "type" : "type"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+      resolve(db.select().table(schema.tables.PERFORMER).where("id", "=", id_performer));
   });
 }
 

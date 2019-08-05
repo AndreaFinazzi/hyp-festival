@@ -4,17 +4,22 @@
   "description": "Festival Server ",
   "main": "index.js",
   "scripts": {
-	"prestart": "npm install",
-	"start": "node index.js"
+    "prestart": "npm install",
+    "start": "node index.js"
   },
   "keywords": [
     "swagger"
   ],
   "license": "Unlicense",
   "private": true,
+  "env": {
+    "NODE_ENV": "development"
+  },
   "dependencies": {
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
-    "swagger-tools": "0.10.1"
+    "swagger-tools": "^0.10.4",
+    "knex": "^0.19.1",
+    "pg": "^7.12.0"
   }
 }
