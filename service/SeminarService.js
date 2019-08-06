@@ -26,7 +26,11 @@ exports.getSeminar = function() {
  **/
 exports.getSeminarByArtisticEvent = function(id_artistic_event) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    resolve(
+      db.select(schema.tables.SEMINAR + '.*').table(schema.tables.SEMINAR)
+      .innerJoin(schema.tables.ARTISTIC_EVENT, schema.tables.SEMINAR + "." + schema.fields.PK, schema.fields.FK + schema.tables.SEMINAR)
+      .where(schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, "=", id_artistic_event)
+    );
   });
 }
 

@@ -1,5 +1,8 @@
 'use strict';
 
+var dataLayer = require("../utils/DataLayer");
+var db = dataLayer.database;
+var schema = dataLayer.schema;
 
 /**
  * get all photo about the artistic event passed by id as parameter.
@@ -9,19 +12,12 @@
  **/
 exports.getPhotoByArtisticEvent = function(id_artistic_event) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 6,
-  "content" : [ "content", "content" ]
-}, {
-  "id" : 6,
-  "content" : [ "content", "content" ]
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+      resolve(
+        db.select(schema.tables.PHOTO + '.*').table(schema.tables.PHOTO)
+        .innerJoin(schema.tables.PHOTO_GALLERY, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .innerJoin(schema.tables.ARTISTIC_EVENT, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.fields.FK + schema.tables.ARTISTIC_EVENT)
+        .where(schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, "=", id_artistic_event)
+      );
   });
 }
 
@@ -34,19 +30,12 @@ exports.getPhotoByArtisticEvent = function(id_artistic_event) {
  **/
 exports.getPhotoByPerformer = function(id_performer) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 6,
-  "content" : [ "content", "content" ]
-}, {
-  "id" : 6,
-  "content" : [ "content", "content" ]
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+      resolve(
+        db.select(schema.tables.PHOTO + '.*').table(schema.tables.PHOTO)
+        .innerJoin(schema.tables.PHOTO_GALLERY, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .innerJoin(schema.tables.PERFORMER, schema.tables.PERFORMER + "." + schema.fields.PK, schema.fields.FK + schema.tables.PERFORMER)
+        .where(schema.tables.PERFORMER + "." + schema.fields.PK, "=", id_performer)
+      );
   });
 }
 
