@@ -1,5 +1,10 @@
 'use strict';
 
+var dataLayer = require("../utils/DataLayer");
+var db = dataLayer.database;
+var schema = dataLayer.schema;
+
+
 
 /**
  * get all seminars scheduled in the Festival
@@ -8,23 +13,7 @@
  **/
 exports.getSeminar = function() {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "date" : "2000-01-23",
-  "location" : "location",
-  "id" : 6,
-  "title" : "title"
-}, {
-  "date" : "2000-01-23",
-  "location" : "location",
-  "id" : 6,
-  "title" : "title"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve(db.select().table(schema.tables.SEMINAR));
   });
 }
 
@@ -37,23 +26,7 @@ exports.getSeminar = function() {
  **/
 exports.getSeminarByArtisticEvent = function(id_artistic_event) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "date" : "2000-01-23",
-  "location" : "location",
-  "id" : 6,
-  "title" : "title"
-}, {
-  "date" : "2000-01-23",
-  "location" : "location",
-  "id" : 6,
-  "title" : "title"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve();
   });
 }
 
@@ -66,18 +39,7 @@ exports.getSeminarByArtisticEvent = function(id_artistic_event) {
  **/
 exports.getSeminarById = function(id_seminar) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "date" : "2000-01-23",
-  "location" : "location",
-  "id" : 6,
-  "title" : "title"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve(db.select().table(schema.tables.SEMINAR).where('id', id_seminar));
   });
 }
 

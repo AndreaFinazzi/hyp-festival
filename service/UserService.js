@@ -1,5 +1,7 @@
 'use strict';
-
+var dataLayer = require("../utils/DataLayer");
+var db = dataLayer.database;
+var schema = dataLayer.schema;
 
 /**
  * show to the logged user his personal informations.
@@ -9,18 +11,7 @@
  **/
 exports.getUserById = function(id_user) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "last_name" : "last_name",
-  "id" : 0,
-  "first_name" : "first_name",
-  "email" : "email"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve(db.select().table(schema.tables.USER).where("id", id_user))
   });
 }
 
@@ -34,18 +25,7 @@ exports.getUserById = function(id_user) {
  **/
 exports.logUser = function(email,password) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "last_name" : "last_name",
-  "id" : 0,
-  "first_name" : "first_name",
-  "email" : "email"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+   
   });
 }
 
@@ -58,7 +38,7 @@ exports.logUser = function(email,password) {
  **/
 exports.registerUser = function(body) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    resolve(db(schema.tables.USER).insert(body));
   });
 }
 
