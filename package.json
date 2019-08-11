@@ -4,7 +4,6 @@
   "description": "Festival Server ",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
     "start": "node index.js"
   },
   "keywords": [
@@ -16,9 +15,17 @@
     "NODE_ENV": "development"
   },
   "dependencies": {
-    "connect": "^3.2.0",
-    "js-yaml": "^3.3.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "connect": "^3.7.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "js-yaml": "^3.13.1",
     "knex": "^0.19.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.12.0",
     "psql": "0.0.1",
     "swagger-tools": "^0.10.4"

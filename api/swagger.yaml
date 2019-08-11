@@ -461,7 +461,24 @@ paths:
             $ref: "#/definitions/User"
         405:
           description: "Invalid Input"
+        401:
+          description: "Unauthorized"  
       x-swagger-router-controller: "User"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "log out the user."
+      operationId: "logOutUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      responses:
+        200:
+          description: "Successfully Logged Out"
+        500:
+          description: "Unexpected Error" 
+      x-swagger-router-controller: "User"    
+      
   /reservation:
     get:
       tags:
@@ -480,6 +497,8 @@ paths:
               $ref: "#/definitions/Reservation"
         500:
           description: "Unexpected Error"
+        401:
+          description: "Unauthorized"  
       security:
       - apiKey: []
       x-swagger-router-controller: "Reservation"
