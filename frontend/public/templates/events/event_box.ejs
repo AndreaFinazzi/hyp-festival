@@ -1,0 +1,26 @@
+<div class="event_box">
+            <img src="<%= data.primary_photo %>" alt="<%= data.title %>">
+            <div class="event_info">
+                <div class="event_title">
+                    <%= data.title %>
+                </div>
+                <div class="speakers">
+                    <strong>Performers</strong>
+                    <span><%= data.performers %></span>
+                </div>
+                <div class="event_date">
+                    <%= data.date %>
+                </div>
+            </div>
+            <div class="event_word">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-12">
+                        <%= data.abstract %>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <%= data.abstract %>                    
+                    </div>
+                </div>
+            </div>
+            <a href="/events/<%= data.id %>" class="readmore_btn">read more</a>
+        </div>

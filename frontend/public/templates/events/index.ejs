@@ -1,0 +1,48 @@
+<% include ../header %>
+
+    <!--page title section-->
+<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="assets/img/bg/bg-img.png">
+    <div class="overlay_dark"></div>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <div class="inner_cover_content">
+                    <h3>
+                       Events
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="breadcrumbs">
+            <ul>
+                <li><a href="/index">Home</a>  |   </li>
+                <li><span>Events</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--page title section end-->
+
+
+<!--events section -->
+<section class="pt100 pb100">
+    <div class="bootstrap-select-wrapper">
+        <label>Filter by type</label>
+        <select id="event-type-select" title="Scegli una opzione">
+            <option value="" disabled selected>-- Type filter --</option>
+            <option value="opera">Opera</option>
+            <option value="theater">Theater</option>
+            <option value="dance">Dance</option>
+            <option value="music">Music</option>
+        </select>
+    </div>
+    <div id="event-box-container" class="container">
+
+        <%# Events boxes loaded here %>
+
+    </div>
+</section>
+<!--event section end -->
+
+<% include ../footer %> 
