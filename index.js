@@ -11,6 +11,15 @@ var jsyaml = require('js-yaml');
 var app = express();
 var serverPort = 8080;
 
+//const passport = require("passport");
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require ('express-session');
+var flash    = require('connect-flash');
+var bcrypt = require ('bcrypt');
+
+module.exports.bcrypt = bcrypt;
+
 // swaggerRouter configuration
 var options = {
   swaggerUi: path.join(__dirname, '/swagger.json'),
@@ -23,6 +32,21 @@ var spec = fs.readFileSync(path.join(__dirname, 'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
 
 const staticDir = 'frontend/public/';
+
+//Configure passport
+//require('./utils/Passport')(passport);
+//module.exports.passport = passport;
+
+//Initialize the express-session middleware
+
+app.use(session({ secret: "secret",
+                  resave: true,
+                  saveUninitialized: true}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.use(flash());
+
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {

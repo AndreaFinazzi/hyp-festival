@@ -1,30 +1,33 @@
 'use strict';
 
+var dataLayer = require("../utils/DataLayer");
+var db = dataLayer.database;
+var schema = dataLayer.schema;
 
 /**
  * get all reservations about the logged user.
  *
  * returns List
  **/
-exports.getReservations = function() {
+exports.getReservations = function(sessionId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "quantity" : 5,
-  "id_artistic_event" : 1,
-  "id" : 0,
-  "id_user" : 6
-}, {
-  "quantity" : 5,
-  "id_artistic_event" : 1,
-  "id" : 0,
-  "id_user" : 6
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+
+      db.select().table(schema.tables.RESERVATION).join(schema.tables.ARTISTIC_EVENT,schema.tables.RESERVATION+"."+
+        schema.fields.FK+"artistic_event",schema.tables.ARTISTIC_EVENT+"."+schema.fields.PK).where(
+          schema.tables.RESERVATION+"."+schema.fields.FK+"user", sessionId).then(function (result) {
+
+            if (Object.keys(result).length==0)
+              resolve({message: "You don't have any reservation"});
+            else
+              resolve(result);
+          })
+        
+        
+          resolve();
+          
+    
+      
+    
   });
 }
 
@@ -35,9 +38,12 @@ exports.getReservations = function() {
  * body Reservation reservation object that needs to be add for the user.
  * no response value expected for this operation
  **/
-exports.postReservation = function(body) {
+exports.postReservation = function(body, sessionId) {
   return new Promise(function(resolve, reject) {
-    resolve();
+
+    
+      resolve(db.select().table(schema.tables.USER).insert(body).where(schema.fields.PK, sessionId));
+    
   });
 }
 
