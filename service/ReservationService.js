@@ -11,9 +11,22 @@ var schema = dataLayer.schema;
  **/
 exports.getReservations = function(sessionId) {
   return new Promise(function(resolve, reject) {
+
+      db.select().table(schema.tables.RESERVATION).join(schema.tables.ARTISTIC_EVENT,schema.tables.RESERVATION+"."+
+        schema.fields.FK+"artistic_event",schema.tables.ARTISTIC_EVENT+"."+schema.fields.PK).where(
+          schema.tables.RESERVATION+"."+schema.fields.FK+"user", sessionId).then(function (result) {
+
+            if (Object.keys(result).length==0)
+              resolve({message: "You don't have any reservation"});
+            else
+              resolve(result);
+          })
+        
+        
+          resolve();
+          
     
-    
-      resolve(db.select().table(schema.tables.USER).where(schema.fields.PK, sessionId));
+      
     
   });
 }

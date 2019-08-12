@@ -5,8 +5,9 @@ var Reservation = require('../service/ReservationService');
 
 module.exports.getReservations = function getReservations (req, res, next) {
 
+
   if (req.session.loggedIn){
-    var sessionId = req.session.id;
+    var sessionId = req.session.logged_id;
 
     Reservation.getReservations(sessionId)
       .then(function (response) {
@@ -24,7 +25,7 @@ module.exports.postReservation = function postReservation (req, res, next) {
   var body = req.swagger.params['body'].value;
 
   if (req.session.loggedIn){
-    var sessionId = req.session.id;
+    var sessionId = req.session.logged_id;
 
     Reservation.postReservation(body, sessionId)
         .then(function (response) {

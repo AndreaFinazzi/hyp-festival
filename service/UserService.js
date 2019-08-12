@@ -29,31 +29,21 @@ exports.getUserById = function(id_user) {
  **/
 exports.logUser = function(email,password) {
 
-
   return new Promise(function(resolve, reject) {
-    log.debug("Login process:", email);
-            try {
               
-              const result = db.select().table(schema.tables.USER).where(schema.fields.EMAIL, email);
-              //no user found case
-              if (Object.keys(result).length == 0)
-                return reject({status: 405, message:"Please enter valid credentials"});
-              else {//successfully logged case
-                if (bcrypt.compareSync(password, result[0].password))
-                  return resolve(result);
-                else
-                  return reject({status: 405, message:"Please enter valid credentials"});  
-              
-              }
-            }
-            catch (err) {
-              //error case
-              log.error("/user/login: " + err);
-              return reject({status: 401, message:"Unauthorized"});
-            }
-    
-                                         
-                                            
+              db.select().table(schema.tables.USER).where(schema.fields.EMAIL, email).then(
+                function(result) {
+                  //no user found case
+                  if (Object.keys(result).length == 0)
+                    return reject({status: 405, message:"Please enter valid credentials"});
+                  else {//successfully logged case
+                      if (bcrypt.compareSync(password, result[0].password))
+                        return resolve(result);
+                      else
+                        return reject({status: 405, message:"Please enter valid credentials"});  
+                  }
+                }
+              );                                       
   });
 }
 
@@ -65,6 +55,8 @@ exports.logUser = function(email,password) {
  * no response value expected for this operation
  **/
 exports.registerUser = function(body) {
+
+  console.log("inside register");
   return new Promise(function(resolve, reject) {
     
     //control valid user and password   
@@ -88,16 +80,15 @@ exports.registerUser = function(body) {
            
             else{ //correctly registered
               var user = {
-                
-                "firstname": body.firstname,
-                "lastname": body.lastname,
+                "first_name": body.first_name,
+                "last_name": body.last_name,
                 "email":body.email,
                 "password":bcrypt.hashSync(body.password, 10)
               }  
               
               db(schema.tables.USER).insert(user).then(function(){
                 
-                return resolve(user);
+                return resolve(db.select(schema.fields.PK, schema.fields.EMAIL, "first_name", "last_name").table(schema.tables.USER).where(schema.fields.EMAIL, user.email));
                 
               })
             
@@ -107,10 +98,11 @@ exports.registerUser = function(body) {
 
       })
       
+
     }
     
-      return reject({status: 405, message:"Something goes wrong"});
     
+      //return reject({status: 405, message:"Something goes wrong"});
     
   });
 }

@@ -387,11 +387,6 @@
               "description": "Unexpected Error"
             }
           },
-          "security": [
-            {
-              "apiKey": []
-            }
-          ],
           "x-swagger-router-controller": "ArtisticEvent"
         }
       },
@@ -599,11 +594,6 @@
               "description": "Unexpected Error"
             }
           },
-          "security": [
-            {
-              "apiKey": []
-            }
-          ],
           "x-swagger-router-controller": "User"
         }
       },
@@ -615,17 +605,45 @@
           "summary": "register new user to the web site",
           "operationId": "registerUser",
           "consumes": [
-            "application/json"
+            "application/x-www-form-urlencoded"
           ],
           "parameters": [
             {
-              "in": "body",
-              "name": "body",
-              "description": "user object that needs to be registered.",
+              "name": "first_name",
+              "in": "formData",
+              "description": "first name of the user to log",
               "required": true,
-              "schema": {
-                "$ref": "#/definitions/User"
-              }
+              "type": "string"
+            },
+            {
+              "name": "last_name",
+              "in": "formData",
+              "description": "last name of the user to log",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "email",
+              "in": "formData",
+              "description": "email of the user to log",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "formData",
+              "description": "password of the user to log",
+              "required": true,
+              "type": "string",
+              "format": "password"
+            },
+            {
+              "name": "password_confirm",
+              "in": "formData",
+              "description": "password confirm of the user to log",
+              "required": true,
+              "type": "string",
+              "format": "password"
             }
           ],
           "responses": {
@@ -640,7 +658,7 @@
         }
       },
       "/user/login": {
-        "get": {
+        "post": {
           "tags": [
             "user"
           ],
@@ -735,11 +753,6 @@
               "description": "Unauthorized"
             }
           },
-          "security": [
-            {
-              "apiKey": []
-            }
-          ],
           "x-swagger-router-controller": "Reservation"
         },
         "post": {
@@ -772,13 +785,6 @@
           },
           "x-swagger-router-controller": "Reservation"
         }
-      }
-    },
-    "securityDefinitions": {
-      "apiKey": {
-        "type": "apiKey",
-        "name": "X-API-KEY",
-        "in": "header"
       }
     },
     "definitions": {
