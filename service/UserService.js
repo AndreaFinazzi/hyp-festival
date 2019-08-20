@@ -37,8 +37,11 @@ exports.logUser = function(email,password) {
                   if (Object.keys(result).length == 0)
                     return reject({status: 405, message:"Please enter valid credentials"});
                   else {//successfully logged case
-                      if (bcrypt.compareSync(password, result[0].password))
+                      if (bcrypt.compareSync(password, result[0].password)){
+                        result[0].password = null;
                         return resolve(result);
+                      }
+                        
                       else
                         return reject({status: 405, message:"Please enter valid credentials"});  
                   }
@@ -56,12 +59,11 @@ exports.logUser = function(email,password) {
  **/
 exports.registerUser = function(body) {
 
-  console.log("inside register");
   return new Promise(function(resolve, reject) {
     
     //control valid user and password   
     if (!validUser(body.email, body.password))
-      return reject(405);
+      return reject({status: 405, message:"Your password must contain at least 6 characters"});
     else{
 
       //control if there is another user with that email

@@ -22,12 +22,13 @@ module.exports.getReservations = function getReservations (req, res, next) {
 };
 
 module.exports.postReservation = function postReservation (req, res, next) {
-  var body = req.swagger.params['body'].value;
+  
+  var id_artistic_event = req.swagger.params["id_artistic_event"].value;
 
   if (req.session.loggedIn){
     var sessionId = req.session.logged_id;
 
-    Reservation.postReservation(body, sessionId)
+    Reservation.postReservation(sessionId, id_artistic_event)
         .then(function (response) {
           utils.writeJson(res, response);
         })
