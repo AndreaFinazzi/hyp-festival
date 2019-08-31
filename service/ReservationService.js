@@ -16,20 +16,23 @@ exports.getReservations = function(sessionId) {
     db.select("artistic_event.title", "artistic_event.id", "artistic_event.id_photo", "reservation.quantity").table(schema.tables.ARTISTIC_EVENT).innerJoin(
       schema.tables.RESERVATION, "artistic_event.id", "reservation.id_artistic_event").where("reservation.id_user", sessionId).then(function (result) {
 
-        var ob = Object(result);
+        resolve(result);
+
+        /*
         if (Object.keys(result).length==0)
           resolve({message: "You don't have any reservation"});
         else{
-        //dove mettiamo multiple prenotazioni? conviene metterlo in tabella reservazion
-        //creo json
+        
         var reserv = Object(result);
-        //query sulla foto
+        
         
           resolve(result);
         
         
         
         }
+
+        */
       })
     
     

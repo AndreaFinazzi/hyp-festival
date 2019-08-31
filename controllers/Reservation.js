@@ -18,7 +18,7 @@ module.exports.getReservations = function getReservations (req, res, next) {
       });
   }
   else
-    utils.writeJson(res, {status: 401, message: "You aren't logged"});
+    utils.writeJson(res,{status: 401, message: "You aren't logged"}, 401);
 };
 
 module.exports.postReservation = function postReservation (req, res, next) {
@@ -38,5 +38,6 @@ module.exports.postReservation = function postReservation (req, res, next) {
 
   }
   else
-    utils.writeJson(res, {status:401, message: "You aren't logged"});
+    utils.writeJson(res,{status: 401, message: "You aren't logged"}, 401);
+    
 };
