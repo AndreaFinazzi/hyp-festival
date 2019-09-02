@@ -29,16 +29,22 @@ module.exports.logUser = function logUser (req, res, next) {
       req.session.logged_id = response[0].id;
       
       utils.writeJson(res, response);
+      
+      res.redirect("/index?successed=true");
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      
+      utils.writeJson(res, response, response.status);
+      res.redirect("/login?successed=false");
     });
 };
 
 module.exports.logOutUser = function logOutUser(req, res, next) {
 
   req.session.destroy();
-
+  res.redirect("/index?successed=true");
+  res.end();
+  
 }
 
 module.exports.registerUser = function registerUser (req, res, next) {
@@ -60,13 +66,15 @@ module.exports.registerUser = function registerUser (req, res, next) {
   User.registerUser(body)
     .then(function (response) {
 
-      //Enable Session
-      req.session.loggedIn = true;
-      req.session.logged_id = response[0].id;
       
       utils.writeJson(res, response);
+      
+      res.redirect("/login?successed=true");
+      
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      if (response.status)
+        utils.writeJson(res, response, response.status);
+        res.redirect("/register?successed=false");
     });
 };

@@ -16,7 +16,6 @@ var ejs = require('ejs')
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require ('express-session');
-var flash    = require('connect-flash');
 var bcrypt = require ('bcrypt');
 
 module.exports.bcrypt = bcrypt;
@@ -46,7 +45,7 @@ app.use(session({ secret: "secret",
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(flash());
+
 
 
 // Initialize the Swagger middleware

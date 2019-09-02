@@ -4,7 +4,6 @@
   "description": "Festival Server ",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
     "start": "node index.js",
     "sass:compile": "node-sass -w frontend/sass/ -o frontend/public/assets/css/"
   },

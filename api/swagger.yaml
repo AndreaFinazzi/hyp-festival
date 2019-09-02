@@ -523,14 +523,14 @@ paths:
       summary: "Add a reservation for the logged user."
       operationId: "postReservation"
       consumes:
-      - "application/json"
+      - "application/x-www-form-urlencoded"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "reservation object that needs to be add for the user."
+      - name: "id_artistic_event"
+        in: "formData"
+        description: "id of the artistic event to book"
         required: true
-        schema:
-          $ref: "#/definitions/Reservation"
+        type: "integer"
+        format: "int64"      
       responses:
         200:
           description: "Successfull Operation"
@@ -679,9 +679,6 @@ definitions:
   Reservation:
     type: "object"
     properties:
-      id:
-        type: "integer"
-        format: "int64"
       id_user:
         type: "integer"
         format: "int64"
@@ -691,11 +688,10 @@ definitions:
       quantity:
         type: "integer"
         format: "int32"
-    example:
-      quantity: 5
-      id_artistic_event: 1
-      id: 0
-      id_user: 6
+      title_artistic_event:
+        type: "string"
+      photo:
+        $ref: "#/definitions/Photo"
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"
