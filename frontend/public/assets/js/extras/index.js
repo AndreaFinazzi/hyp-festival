@@ -1,6 +1,6 @@
 const endpoints = {
-    getAll: 'api/seminar/',
-    getByEvent: 'api/performer/performing_in/',
+    getAll: '/api/seminar/',
+    getByEvent: '/api/performer/performing_in/',
 }
 
 /* ==============================================
@@ -8,7 +8,7 @@ const endpoints = {
 =============================================== */
 'use strict';
 $(window).load(function () {
-    $('.loader').delay(500).fadeOut('slow');
+    $('.loader').delay(750).fadeOut('slow');
 });
 
 

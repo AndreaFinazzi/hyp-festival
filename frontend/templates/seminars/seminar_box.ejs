@@ -1,0 +1,15 @@
+<div class="blog_card">
+    <img src="/assets/img/blog/blog1.png" alt="blog News ">
+    <div class="blog_box_data">
+        <span class="blog_date">
+            <%= data.date %> 
+        </span>
+        <div class="blog_meta">
+            <span>About: <%= data.joinItems.map(item => { return '<a href="/events?id=' + item.id + '">' + item.title + ' </a>'}).join(', ') %></span> | <span> <%= data.location %> </span>
+        </div>
+        <h5>
+            <%= data.title %>
+        </h5>
+        <a href="/seminars?id=<%= data.id %>" class="readmore_btn">Read More</a>
+    </div>
+</div>

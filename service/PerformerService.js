@@ -12,7 +12,9 @@ var schema = dataLayer.schema;
 exports.getPerformers = function() {
   return new Promise(function(resolve, reject) {
       resolve(
-        db.select().table(schema.tables.PERFORMER)
+          db.select(schema.tables.PERFORMER + ".*", schema.tables.PHOTO + ".path").table(schema.tables.PERFORMER)
+          .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+          .options({ nestTables: true})
         );
   });
 }
@@ -45,7 +47,11 @@ exports.getPerformersAtEvent = function(id_event) {
 exports.getPerformersById = function(id_performer) {
   return new Promise(function(resolve, reject) {
       resolve(
-        db.select().table(schema.tables.PERFORMER).where(schema.fields.PK, "=", id_performer)
+        db.select(schema.tables.PERFORMER + ".*", schema.tables.PHOTO + ".path").table(schema.tables.PERFORMER)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .where(schema.tables.PERFORMER + "." + schema.fields.PK, "=", id_performer)
+        .options({ nestTables: true})
+
         );
   });
 }

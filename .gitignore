@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# Compiled/published frontend static files
+frontend/public/*.html
+frontend/public/*.template

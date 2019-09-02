@@ -10,6 +10,7 @@ var jsyaml = require('js-yaml');
 
 var app = express();
 var serverPort = 8080;
+var ejs = require('ejs')
 
 //const passport = require("passport");
 var cookieParser = require('cookie-parser');
@@ -51,8 +52,8 @@ app.use(flash());
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
-  app.set('views', 'frontend/public/templates');
-  app.set('view engine', 'ejs');
+  // app.set('views', 'frontend/public/templates');
+  // app.set('view engine', 'ejs');
 
   // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
   app.use(middleware.swaggerMetadata());
@@ -81,29 +82,46 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
 const staticRoutes = function(app) {
 
-  app.use('/index', function (req, res) {
-    res.render('index.ejs', getStatics({ scripts: ['index.js'] }));
-  });
+  compileTemplate('index', getStatics({ scripts: ['index.js'] }));
+  compileTemplate('events/index', getStatics({ scripts: ['events.js'] }));
+  compileTemplate('performers/index', getStatics({ scripts: ['performers.js'] }));
+  compileTemplate('seminars/index', getStatics({ scripts: ['seminars.js'] }));
+  compileTemplate('contacts', getStatics({ renderer: false }));
 
-  app.use('/events', function (req, res) {
-    res.render('events/index.ejs', getStatics({ scripts: ['events.js'] }));
-  });
+  publicTemplate('slider_item');
+  publicTemplate('seminars/seminar_box');
+  publicTemplate('performers/details');
+  publicTemplate('performers/performer_box');
+  publicTemplate('events/details');
+  publicTemplate('events/event_box');
 
-  app.use('/performers', function (req, res) {
-    res.render('performers/index.ejs', getStatics({ scripts: ['performers.js'] }));
-  });
+  // app.use('/index', function (req, res) {
+  //   res.render('index.ejs', getStatics({ scripts: ['index.js'] }));
+  // });
 
-  app.use('/seminars', function (req, res) {
-    res.render('seminars/index.ejs', getStatics({ scripts: ['seminars.js'] }));
-  });
+  // app.use('/events/:id', function (req, res) {
+  //   res.render('details.ejs', getStatics({ scripts: ['events.js'] }));
+  // });
 
-  app.use('/contacts', function (req, res) {
-    res.render('contacts.ejs', getStatics({ renderer: false }));
-  });
+  // app.use('/events', function (req, res) {
+  //   res.render('events/index.ejs', getStatics({ scripts: ['events.js'] }));
+  // });
+  
+  // app.use('/performers', function (req, res) {
+  //   res.render('performers/index.ejs', getStatics({ scripts: ['performers.js'] }));
+  // });
 
-  app.use(/^(?!^\/assets|\/templates).*$/, function (req, res) {
-    res.redirect('/index');
-  });
+  // app.use('/seminars', function (req, res) {
+  //   res.render('seminars/index.ejs', getStatics({ scripts: ['seminars.js'] }));
+  // });
+
+  // app.use('/contacts', function (req, res) {
+  //   res.render('contacts.ejs', getStatics({ renderer: false }));
+  // });
+
+  // app.use(/^(?!^\/assets|\/templates|\/api).*$/, function (req, res) {
+  //   res.redirect('/index');
+  // });
 }
 
 const listFileIn = function (dir) {
@@ -120,22 +138,45 @@ const getStatics = function (options = {renderer: true}) {
   }
 
   if (!options.renderer || options.renderer == false) {
-    listFileIn(staticDir + 'assets/js/ejs')
-    .map(fileName => 'assets/js/ejs/' + fileName)
+    ['contentRenderer.js']
+    .map(fileName => '/assets/js/' + fileName)
     .forEach(element => statics.scripts.push(element));
   }
 
   if (options.scripts) {
     options.scripts
-      .map(fileName => 'assets/js/extras/' + fileName)
+      .map(fileName => '/assets/js/extras/' + fileName)
       .forEach(element => statics.scripts.push(element));
   }
 
   if (options.styles) {
     options.styles
-      .map(fileName => 'assets/css/extras/' + fileName)
+      .map(fileName => '/assets/css/extras/' + fileName)
       .forEach(element => statics.styles.push(element));
   }
 
   return statics;
 }
+
+function publicTemplate(path) {
+  fs.copyFile('frontend/templates/' + path + '.ejs', 'frontend/public/' + path + '.template', (err) => {
+    if (err) throw err;
+    console.log('frontend/templates/' + path + '.template successfully published.');
+  });
+}
+
+function compileTemplate(path, information) {
+  fs.readFile('frontend/templates/' + path + '.ejs', 'utf8', function (err, data) {
+      if (err) { console.log(err); return false; }
+
+      var ejs_string = data,
+          template = ejs.compile(ejs_string, { filename: 'frontend/templates/' + path  + '.ejs'}),
+          html = template(information);
+
+      fs.writeFile('frontend/public/' + path + '.html', html, function(err) {
+          if(err) { console.log(err); return false }
+          return true;
+      });
+  });
+}
+

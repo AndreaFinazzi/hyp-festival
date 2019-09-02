@@ -1,0 +1,30 @@
+<%=if (data.index % 3 == 0) '<div class="row no-gutters">' %>
+<div class="col-md col-sm">
+    <div class="speaker_box">
+        <div class="speaker_img">
+            <img src="/assets/img/<%= data.path %>" alt="<%= data.name %>">
+            <div class="info_box">
+                <h5 class="name"><%= data.name %></h5>
+                <p class="position"><%= data.type %></p>
+            </div>
+        </div>
+        <div class="speaker_social">
+            <p>
+                <%= data.achievements %>
+            </p>
+            <ul>
+                <li>
+                    <a href="#"><i class="ion-social-facebook"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="ion-social-twitter"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="ion-social-instagram"></i></a>
+                </li>
+            </ul>
+            <a href="/performers?id=<%= data.id %>" class="readmore_btn">read more</a>
+        </div>
+    </div>
+</div>
+<%=if (data.index % 3 == 2 || data.last) '</div>' %>

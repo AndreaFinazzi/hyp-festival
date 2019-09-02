@@ -12,7 +12,9 @@ var schema = dataLayer.schema;
 exports.getArtisticEvent = function () {
   return new Promise(function (resolve, reject) {
     resolve(
-      db.select().table(schema.tables.ARTISTIC_EVENT)
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .options({ nestTables: true})
     );
   });
 }
@@ -42,7 +44,10 @@ exports.getArtisticEventByDate = function (date) {
 exports.getArtisticEventById = function (id_artistic_event) {
   return new Promise(function (resolve, reject) {
     resolve(
-      db.select().table(schema.tables.ARTISTIC_EVENT).where(schema.fields.PK, "=", id_artistic_event)
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .where(schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, "=", id_artistic_event)
+        .options({ nestTables: true})
     );
   });
 }
@@ -90,7 +95,9 @@ exports.getArtisticEventBySeminar = function (id_seminar) {
 exports.getArtisticEventByType = function (type) {
   return new Promise(function (resolve, reject) {
     resolve(
-      db.select().table(schema.tables.ARTISTIC_EVENT).where(schema.fields.TYPE, "=", type)
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+      .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+      .where(schema.fields.TYPE, "=", type)
     );
   });
 }
