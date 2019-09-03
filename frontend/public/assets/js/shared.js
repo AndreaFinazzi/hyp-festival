@@ -1,3 +1,9 @@
+
+$(window).load(function () {
+    $('.loader').delay(750).fadeOut('slow');
+});
+
+
 $(document).ready(() => {
     'use strict';
     /* ==============================================
@@ -23,8 +29,4 @@ $(document).ready(() => {
             $('.header').addClass('sticky_header');
         }
     });
-
-    // $('#event-type-select').change(function() {
-    //     renderPerformerBox(endpoints.getByEvent + $(this).val());
-    // })
 });

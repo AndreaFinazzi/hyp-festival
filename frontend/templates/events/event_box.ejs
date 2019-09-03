@@ -1,9 +1,11 @@
 <div class="event_box">
-    <img src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
     <div class="event_info">
         <div class="event_title">
             <%= data.title %>
         </div>
+        
+        <img src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
+
         <div class="speakers">
             <strong>Performers</strong>
             <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
@@ -15,10 +17,10 @@
     <div class="event_word">
         <div class="row justify-content-center">
             <div class="col-md-6 col-12" style="text-align: justify;">
-                <%= data.fact_sheet.split(' ').splice(0, Math.ceil(data.fact_sheet.split(' ').length / 2)).join(' ') %>
+                <%= data.abstract.split(' ').splice(0, Math.ceil(data.abstract.split(' ').length / 2)).join(' ') %>
             </div>
             <div class="col-md-6 col-12" style="text-align: justify;">
-                <%= data.fact_sheet.split(' ').splice(Math.ceil(data.fact_sheet.split(' ').length / 2)).join(' ') %>
+                <%= data.abstract.split(' ').splice(Math.ceil(data.abstract.split(' ').length / 2)).join(' ') %>
             </div>
         </div>
     </div>

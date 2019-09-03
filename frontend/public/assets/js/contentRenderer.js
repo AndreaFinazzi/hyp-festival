@@ -20,7 +20,7 @@ var contentRenderer = (function () {
                                 })
                                 .then(template => {
                                     renderMultiple(items, template, container)
-                                    resolve(callback());
+                                    resolve(callback(items));
                                 })
                                 .catch(reason => {
                                     console.log(reason);

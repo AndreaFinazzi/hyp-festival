@@ -7,21 +7,16 @@ const endpoints = {
 /*  PRE LOADING
 =============================================== */
 'use strict';
-$(window).load(function () {
-    $('.loader').delay(750).fadeOut('slow');
-});
-
-
 $(document).ready(() => {
-    'use strict';
-
     initSlider();
-
 });
 
 const initSlider = function () {
-        renderSlider(endpoints.getAll, function () {
-
+    renderSlider(endpoints.getAll, function (items) {
+        items.forEach((item, i) => {
+            $('#cover-dots').append('<li data="' + String(i) + '"><span>' + String(i + 1) + '</span></li>');
+        });
+        
         /* ==============================================
         SLIDER
         =============================================== */
@@ -61,8 +56,16 @@ const initSlider = function () {
             },
             items: 3
         });
-    });
 
+
+        $(".countdown")
+            .countdown("2019/12/01", function (event) {
+                $(this).html(
+                    event.strftime('<div>%w <span>Weeks</span></div>  <div>%D <span>Days</span></div>  <div>%H<span>Hours</span></div> <div>%M<span>Minutes</span></div> <div>%S<span>Seconds</span></div>')
+                );
+            });
+
+    });
 }
 
 // component-rendering functions

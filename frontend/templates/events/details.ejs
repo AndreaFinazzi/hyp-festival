@@ -23,7 +23,7 @@
 </section>
 <!--page title section end-->
 
-<section class="pt100 pb100 container">
+<section class="pb100 container">
     <div class="event_box">
         <div class="event_info">
             <div class="event_title">
@@ -31,7 +31,7 @@
             </div>
             <div class="speakers">
                 <strong>Performers</strong>
-                <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.title + ' </a>'}).join(', ') %></span>
+                <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
             </div>
             <div class="event_date">
                 <%= data.date %>

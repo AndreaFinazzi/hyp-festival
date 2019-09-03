@@ -1,14 +1,16 @@
 <%=if (data.index % 3 == 0) '<div class="row no-gutters">' %>
 <div class="col-md col-sm">
-    <div class="speaker_box">
-        <div class="speaker_img">
-            <img src="/assets/img/<%= data.path %>" alt="<%= data.name %>">
+    <div class="speaker_box" style="height: 100%;">
+        <div class="speaker_img" style="height: 100%;">
+            <img src="/assets/img/<%= data.path %>" alt="<%= data.name %>" style="height: 100%; object-fit: cover;">
             <div class="info_box">
-                <h5 class="name"><%= data.name %></h5>
-                <p class="position"><%= data.type %></p>
+                <a href="/performers?id=<%= data.id %>">
+                    <h5 class="name"><%= data.name %></h5>
+                    <p class="position"><%= data.type %></p>
+                </a>
             </div>
         </div>
-        <div class="speaker_social">
+        <!-- <div class="speaker_social">
             <p>
                 <%= data.achievements %>
             </p>
@@ -24,7 +26,7 @@
                 </li>
             </ul>
             <a href="/performers?id=<%= data.id %>" class="readmore_btn">read more</a>
-        </div>
+        </div> -->
     </div>
 </div>
 <%=if (data.index % 3 == 2 || data.last) '</div>' %>

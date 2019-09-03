@@ -1,23 +1,29 @@
 <% include header %>
 
-<div class="loader">
-    <div class="loader-outter"></div>
-    <div class="loader-inner"></div>
-</div>
-
 <!--cover section slider -->
 <section id="home" class="home-cover">
     <div id="cover-slider-container" class="cover_slider owl-carousel owl-theme">
     </div>
     <div class="cover_nav">
-        <ul class="cover_dots">
-            <li class="active" data="0"><span>1</span></li>
-            <li  data="1"><span>2</span></li>
-            <li  data="2"><span>3</span></li>
+        <ul id="cover-dots" class="cover_dots">
         </ul>
     </div>
 </section>
 <!--cover section slider end -->
+
+<!--event countdown -->
+<section class="bg-img pt70 pb70" style="background-image: url('assets/img/bg/bg-img.png');">
+    <div class="overlay_dark"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <h4 class="mb30 text-center color-light">Counter until the next event</h4>
+                <div class="countdown"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--event count down end-->
 
 
 <% include footer %> 

@@ -85,7 +85,7 @@ const staticRoutes = function(app) {
   compileTemplate('events/index', getStatics({ scripts: ['events.js'] }));
   compileTemplate('performers/index', getStatics({ scripts: ['performers.js'] }));
   compileTemplate('seminars/index', getStatics({ scripts: ['seminars.js'] }));
-  compileTemplate('contacts', getStatics({ renderer: false }));
+  compileTemplate('contacts', getStatics({ scripts: ['contacts.js'], renderer: false }));
 
   publicTemplate('slider_item');
   publicTemplate('seminars/seminar_box');
