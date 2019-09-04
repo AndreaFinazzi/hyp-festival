@@ -1703,6 +1703,10 @@ header li ul.sub_menu li a:hover {
   padding: 0;
 }
 
+header.header.navbar:hover {
+  background-color: #18181c;
+}
+
 header.sticky_header {
   background-color: #18181c;
   margin: 0;
@@ -1912,13 +1916,13 @@ footer .newsletter_form .form-control {
 .btn-primary {
   background-color: #f50136;
   border: solid 1px #f50136;
-  color: #ffffff;
+  color: #ffffff !important;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
 .btn-primary:hover {
   background-color: #18181c;
-  color: #ffffff;
+  color: #ffffff !important;
   border: solid 1px #18181c;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;

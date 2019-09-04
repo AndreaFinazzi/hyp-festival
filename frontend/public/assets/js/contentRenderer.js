@@ -100,6 +100,10 @@ var contentRenderer = (function () {
                     $('#reservation-modal').remove();
                 })
             }, emptyContainer = false);
+        },
+
+        renderPhotoBox: function (endpoint) {
+            this.renderDataObject(endpoint, 'photo_box', '#photo-gallery-container');
         }
     }
 })();

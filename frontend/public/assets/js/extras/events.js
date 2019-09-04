@@ -5,7 +5,8 @@ const endpoints = {
     getByPerformer: '/api/artistic_event/performed_by/',
     getBySeminar: '/api/artistic_event/discussed_in/',
     getByUser: '/api/artistic_event/discussed_in/',
-    getPerformersByEvent: '/api/performer/performing_in/'
+    getPerformersByEvent: '/api/performer/performing_in/',
+    getPhotoGallery: '/api/photo/by_artistic_event/'
 }
 
 $(document).ready(() => {
@@ -40,6 +41,10 @@ const renderEventBox = endpoint => {
 const renderEventDetails = endpoint => {
     contentRenderer.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'events/details', 'div.main-content', (items) => {
         $('.parallax-window').parallax({imageSrc: '/assets/img/' + items[0].path});
+
+        // render photo gallery
+        contentRenderer.renderPhotoBox(endpoints.getPhotoGallery + items[0].id);
+
         $(window).trigger('resize.px.parallax');
         enableReservation();
     }, emptyContainer = true);
