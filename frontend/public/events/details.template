@@ -29,17 +29,26 @@
             <div class="event_title">
                 <%= data.title %>
             </div>
-            <div class="speakers">
-                <strong>Performers</strong>
-                <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
-            </div>
-            <div class="event_date">
-                <%= data.date %>
+            <div class="row">
+                <div class="col-md-6 no-gutters">
+                    <div class="speakers">
+                        <strong>Performers</strong>
+                        <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
+                    </div>
+                    <div class="event_date">
+                        <%= data.date %>
+                    </div>
+                </div>
+                <div class="col-md-6 no-gutters">
+                    <a data-element="reserve-btn" data-id="<%= data.id %>" class=" btn btn-primary btn-rounded pull-right">
+                        Reserve Ticket
+                    </a>
+                </div>
             </div>
         </div>
         <div class="event_word">
-            <div class="row justify-content-left">
-                <div class="col-md-10 col-12">
+            <div class="row justify-content-left" style="text-align: justify;">
+                <div class="col-md-12 col-12">
                     <%= data.fact_sheet %>
                 </div>
             </div>

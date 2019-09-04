@@ -9,45 +9,17 @@ var schema = dataLayer.schema;
  *
  * returns List
  **/
-exports.getReservations = function(sessionId) {
+exports.getReservations = function(id_user) {
   return new Promise(function(resolve, reject) {
-
-      
-    db.select("artistic_event.title", "artistic_event.id", "artistic_event.id_photo", "reservation.quantity").table(schema.tables.ARTISTIC_EVENT).innerJoin(
-      schema.tables.RESERVATION, "artistic_event.id", "reservation.id_artistic_event").where("reservation.id_user", sessionId).then(function (result) {
-
-        resolve(result);
-
-        /*
-        if (Object.keys(result).length==0)
-          resolve({message: "You don't have any reservation"});
-        else{
-        
-        var reserv = Object(result);
-        
-        
-          resolve(result);
-        
-        
-        
-        }
-
-        */
-      })
-    
-    
-      
-     })
+    resolve(
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.RESERVATION + ".quantity", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+      .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+      .innerJoin(schema.tables.RESERVATION, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.tables.RESERVATION + "." + schema.fields.FK + schema.tables.ARTISTIC_EVENT)
+      .where(schema.tables.RESERVATION + ".id_user", id_user)
+    )  
+  })
   
-}
-    
-    
-          
-    
-      
-    
-  
-
+} 
 
 
 /**
@@ -56,16 +28,16 @@ exports.getReservations = function(sessionId) {
  * body Reservation reservation object that needs to be add for the user.
  * no response value expected for this operation
  **/
-exports.postReservation = function(sessionId, id_artistic_event) {
+exports.postReservation = function(id_user, id_artistic_event, quantity) {
   return new Promise(function(resolve, reject) {
 
       var body = {
-        "id_user": sessionId,
-        "id_artistic_event": id_artistic_event
+        "id_user": id_user,
+        "id_artistic_event": id_artistic_event,
+        "quantity": quantity
       }
 
-      resolve(db.select().table(schema.tables.RESERVATION).insert(body));
-    
+      resolve(db(schema.tables.RESERVATION).insert(body));
   });
 }
 

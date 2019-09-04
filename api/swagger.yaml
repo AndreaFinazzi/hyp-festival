@@ -406,26 +406,21 @@ paths:
         500:
           description: "Unexpected Error"
       x-swagger-router-controller: "Content"
-  /user/{id_user}:
+  /user:
     get:
       tags:
       - "user"
-      summary: "show to the logged user his personal informations."
-      operationId: "getUserById"
+      summary: "show to the user, if logged, his personal informations."
+      operationId: "getUser"
       produces:
       - "application/json"
-      parameters:
-      - name: "id_user"
-        in: "path"
-        description: "id of the logged user"
-        required: true
-        type: "integer"
-        format: "int64"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/User"
+        401:
+          description: "Unauthorized" 
         500:
           description: "Unexpected Error"
       x-swagger-router-controller: "User"
@@ -550,6 +545,12 @@ paths:
       - name: "id_artistic_event"
         in: "formData"
         description: "id of the artistic event to book"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "quantity"
+        in: "formData"
+        description: "number of tickets to book"
         required: true
         type: "integer"
         format: "int64"      

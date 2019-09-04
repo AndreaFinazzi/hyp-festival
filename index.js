@@ -86,6 +86,8 @@ const staticRoutes = function(app) {
   compileTemplate('performers/index', getStatics({ scripts: ['performers.js'] }));
   compileTemplate('seminars/index', getStatics({ scripts: ['seminars.js'] }));
   compileTemplate('contacts', getStatics({ scripts: ['contacts.js'], renderer: false }));
+  compileTemplate('registration/index', getStatics({ scripts: ['registration.js'], renderer: false }));
+  compileTemplate('reservation/index', getStatics({ scripts: ['reservation.js']}));
 
   publicTemplate('slider_item');
   publicTemplate('seminars/seminar_box');
@@ -93,6 +95,8 @@ const staticRoutes = function(app) {
   publicTemplate('performers/performer_box');
   publicTemplate('events/details');
   publicTemplate('events/event_box');
+  publicTemplate('events/reservation_modal');
+  publicTemplate('reservation/reservation_box');
 
   // app.use('/index', function (req, res) {
   //   res.render('index.ejs', getStatics({ scripts: ['index.js'] }));

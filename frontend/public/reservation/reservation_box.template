@@ -1,0 +1,24 @@
+<%= var eventDate = new Date(data.date) %>
+<tr>
+    <td>
+        <img src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
+    </td>
+    <td class="event_date">
+        <span><%= dayNames[eventDate.getDay()] %></span>
+        <%= eventDate.getDate() %>
+        <span><%=  monthNames[eventDate.getMonth()] %></span>
+    </td>
+    <td>
+        <div class="event_place">
+            <h5><%= data.title %></h5>
+            <p>Performers: <%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></p>
+        </div>
+    </td>
+    <td class="event_date">
+        <%= data.quantity %>
+        <span>Tickets</span>
+    </td>
+    <td>
+        <a href="/events?id=<%= data.id %>" class="btn btn-primary btn-rounded">Read More</a>
+    </td>
+</tr>

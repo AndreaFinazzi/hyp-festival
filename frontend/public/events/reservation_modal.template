@@ -1,0 +1,63 @@
+<!-- Modal -->
+<div class="modal fade" id="reservation-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Reserve event's tickets</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <%= var eventDate = new Date(data.date) %>
+                <div class="container">
+                    <div class="table-responsive">
+                        <table class="event_calender table" style="max-width: 750px; min-width: auto; width: auto; margin: auto;">
+                            <thead class="event_title">
+                                <tr>
+                                    <th>
+                                        <i class="ion-ios-pricetags-outline"></i>
+                                        <span>Tickets</span>
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img class="p-0 m-auto" src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
+                                    </td>
+                                    <td class="event_date">
+                                        <span><%= dayNames[eventDate.getDay()] %></span>
+                                        <%= eventDate.getDate() %>
+                                        <span><%= monthNames[eventDate.getMonth()] %></span>
+                                    </td>
+                                    <td>
+                                        <div class="event_place">
+                                            <h5><%= data.title %></h5>
+                                            <p>Performers:
+                                                <%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %>
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td class="p-0">
+                                        <div class="form-group row p-5">
+                                            <input id="quantity-selector" class="form-control" type="number" min="1" max="25" value="1">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="confirm-reservation" type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>

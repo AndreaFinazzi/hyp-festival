@@ -72,6 +72,34 @@ var contentRenderer = (function () {
                     }
                 });
 
+        },
+
+        renderReservationModal: function (endpoint) {
+            this.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'events/reservation_modal', 'div.main-content', (items) => {
+                $('#confirm-reservation').click(function() {
+                    let quantity = $('#quantity-selector').val();
+                    fetch('/api/reservation', {
+                        method: 'POST',
+                        body: 'id_artistic_event=' + items[0].id + '&quantity=' + quantity,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                        },
+                        redirect: 'follow'
+                    })
+                    .then(response => {
+                        window.location = response.url;
+                    })
+                    .catch(result => {
+                        console.log(result.text());
+                        window.location = response.url;
+                    })
+                });
+        
+                $('#reservation-modal').modal();
+                $('#reservation-modal').on('hidden.bs.modal', function (event) {
+                    $('#reservation-modal').remove();
+                })
+            }, emptyContainer = false);
         }
     }
 })();
@@ -105,7 +133,7 @@ const renderTemplate = function (template, data) {
         secondHalf = template.slice(endIndex + '%>'.length);
 
         value = eval(field);
-        value = value ? value : ''
+        if (value == undefined) value = '';
         //value = data[field.split('.')[1]] ? data[field.split('.')[1]] : '';
         template = firstHalf + value + secondHalf;
     }

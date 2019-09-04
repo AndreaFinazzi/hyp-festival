@@ -30,7 +30,10 @@ const init = () => {
 
 // component-rendering functions
 const renderEventBox = endpoint => {
-    contentRenderer.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'events/event_box', '#event-box-container', () => $(window).trigger('resize.px.parallax'));
+    contentRenderer.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'events/event_box', '#event-box-container', () => {
+        $(window).trigger('resize.px.parallax');
+        enableReservation();
+    });
 }
 
 // component-rendering functions
@@ -38,5 +41,19 @@ const renderEventDetails = endpoint => {
     contentRenderer.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'events/details', 'div.main-content', (items) => {
         $('.parallax-window').parallax({imageSrc: '/assets/img/' + items[0].path});
         $(window).trigger('resize.px.parallax');
+        enableReservation();
     }, emptyContainer = true);
+}
+
+const enableReservation = function () {
+    $('[data-element=reserve-btn]').click(function (event) {
+        event.preventDefault();
+        if (window.user.logged) {
+            contentRenderer.renderReservationModal(endpoints.getAll + $(event.target).data('id'));
+        } else {
+            window.location = '/registration';
+        }
+
+        return false;
+    });
 }
