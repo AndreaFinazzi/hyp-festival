@@ -1,5 +1,5 @@
 <%=if (data.index % 3 == 0) '<div class="row no-gutters">' %>
-<div class="col-md col-sm">
+<div class="col col-md col-sm">
     <div class="speaker_box" style="height: 100%;">
         <div class="speaker_img" style="height: 100%;">
             <img src="/assets/img/<%= data.path %>" alt="<%= data.name %>" style="height: 100%; object-fit: cover;">

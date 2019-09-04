@@ -1,9 +1,3 @@
-const endpoints = {
-    getAll: '/api/seminar/',
-    getByEvent: '/api/seminar/discusses/',
-    getEventsBySeminar: '/api/artistic_event/discussed_in/'
-}
-
 $(document).ready(() => {
     init();
 })
@@ -12,18 +6,18 @@ const init = () => {
     url = new URLSearchParams(window.location.search);
 
     if (url.has('id')) {
-        renderSeminarDetails(endpoints.getAll + url.get('id'));
+        renderSeminarDetails(endpoints.getSeminarAll + url.get('id'));
     } else {
-        renderSeminarBox(endpoints.getAll);
+        renderSeminarBox(endpoints.getSeminarAll);
     }
 }
 
 // component-rendering functions
-const renderSeminarBox = endpoint => contentRenderer.renderJoinObject(endpoint, endpoints.getEventsBySeminar, 'seminars/seminar_box', '#seminar-box-container', () => $(window).trigger('resize.px.parallax'));
+const renderSeminarBox = endpoint => contentRenderer.renderJoinObject(endpoint, endpoints.getArtisticEventBySeminar, 'seminars/seminar_box', '#seminar-box-container', () => $(window).trigger('resize.px.parallax'));
 
 // component-rendering functions
 const renderSeminarDetails = endpoint => {
-    contentRenderer.renderJoinObject(endpoint, endpoints.getEventsBySeminar, 'seminars/details', 'div.main-content', (items) => {
+    contentRenderer.renderJoinObject(endpoint, endpoints.getArtisticEventBySeminar, 'seminars/details', 'div.main-content', (items) => {
         $('.parallax-window').parallax({imageSrc: '/assets/img/' + items[0].path});
         $(window).trigger('resize.px.parallax');
     }, emptyContainer = true);
