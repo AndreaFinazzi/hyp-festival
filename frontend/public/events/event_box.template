@@ -9,7 +9,7 @@
                 <div class="info_box">
                     <a href="/performers?id=<%= data.id %>"></a>
                     <h5 class="name"><%= data.date %></h5>
-                    <p class="position"><%= data.type %></p>
+                    <p class="position" style="text-transform: uppercase;"><%= data.type %></p>
                     </a>
                 </div>
             </div>
@@ -20,9 +20,6 @@
                     <strong>Performers</strong>
                     <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
                 </div>
-                <!-- <div class="event_date">
-                    <%= data.date %>
-                </div> -->
             </div>
             <div class="col-md-6 no-gutters" style="color: white;">
                 <a data-element="reserve-btn" data-id="<%= data.id %>" class=" btn btn-primary pull-right">

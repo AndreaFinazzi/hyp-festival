@@ -100,6 +100,26 @@ var contentRenderer = (function () {
                     $('#reservation-modal').remove();
                 })
             }, emptyContainer = false);
+        },
+
+        renderPhotoBox: function (endpoint) {
+            this.renderDataObject(endpoint, 'photo_box', '#photo-gallery-container');
+        },
+
+        renderPageContent: function (endpoint, module = 'main') {
+            fetch(endpoint)
+            .then(response => {
+                return response.json();
+            })
+            .then(result => {
+                $('[data-module=' + module + '] #content-title').html(result[0].title);
+                $('[data-module=' + module + '] #content-body').html(result[0].content);
+        
+                if (result[0].path) {
+                    $('.parallax-window').parallax({imageSrc: '/assets/img/' + result[0].path});
+                }
+                $(window).trigger('resize.px.parallax');
+            })
         }
     }
 })();

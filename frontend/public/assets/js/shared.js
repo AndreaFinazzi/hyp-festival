@@ -4,6 +4,28 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
 const dayNames = ["Tuesday", "Wednesday", "Thursday", "Friday", "Sunday", "Monday"];
 
+const endpoints = {
+    getContentByName: '/api/content/',
+    getPhotoGallery: '/api/photo/by_artistic_event/',
+
+    getArtisticEventAll: '/api/artistic_event/',
+    getArtisticEventByType: '/api/artistic_event/by_type/',
+    getArtisticEventByDate: '/api/artistic_event/by_date/',
+    getArtisticEventByPerformer: '/api/artistic_event/performed_by/',
+    getArtisticEventBySeminar: '/api/artistic_event/discussed_in/',
+
+    getSeminarAll: '/api/seminar/',
+    getSeminarByEvent: '/api/seminar/discusses/',
+
+    getPerformerAll: '/api/performer/',
+    getPerformerByEvent: '/api/performer/performing_in/',
+
+    userRegister: '/api/user/register',
+    userLogin: '/api/user/login',
+    userLogout: '/api/user/logout',
+
+    getReservationAll: '/api/reservation'
+}
 
 $(window).load(function () {
     options = undefined;
@@ -111,6 +133,8 @@ $(window).load(function () {
 
 $(document).ready(() => {
     'use strict';
+
+    contentRenderer.renderPageContent(endpoints.getContentByName + 'footer', 'footer');
 
     /* ==============================================
     /*   wow

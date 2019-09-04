@@ -1,8 +1,3 @@
-const endpoints = {
-    getAll: '/api/reservation',
-    getPerformersByEvent: '/api/performer/performing_in/'
-}
-
 $(window).on('user-logged', function () {
     $('#user-name').text(window.user.first_name + ' ' + window.user.last_name);
     $('#user-email').text(window.user.email);
@@ -13,7 +8,7 @@ $(window).on('user-not-logged', function () {
 })
 
 $(document).ready(function () {
-    renderReservations(endpoints.getAll, function (items) {
+    renderReservations(endpoints.getReservationAll, function (items) {
         $('#user-reservation-counter').text(items.length + ' active reservations');
         
         $(window).trigger('resize.px.parallax')
@@ -29,5 +24,5 @@ logout = function() {
 }
 
 const renderReservations = function (endpoint, callback) {
-    contentRenderer.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'reservation/reservation_box', '#reservation-box-container', callback);
+    contentRenderer.renderJoinObject(endpoint, endpoints.getPerformerByEvent, 'reservation/reservation_box', '#reservation-box-container', callback);
 }

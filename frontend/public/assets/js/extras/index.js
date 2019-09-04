@@ -1,18 +1,14 @@
-const endpoints = {
-    getAll: '/api/seminar/',
-    getByEvent: '/api/performer/performing_in/',
-}
-
 /* ==============================================
 /*  PRE LOADING
 =============================================== */
 'use strict';
 $(document).ready(() => {
+    contentRenderer.renderPageContent(endpoints.getContentByName + 'presentation', 'main');
     initSlider();
 });
 
 const initSlider = function () {
-    renderSlider(endpoints.getAll, function (items) {
+    renderSlider(endpoints.getSeminarAll, function (items) {
         items.forEach((item, i) => {
             $('#cover-dots').append('<li data="' + String(i) + '"><span>' + String(i + 1) + '</span></li>');
         });

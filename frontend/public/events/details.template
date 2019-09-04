@@ -30,7 +30,7 @@
                 <%= data.title %>
             </div>
             <div class="row">
-                <div class="col-md-6 no-gutters">
+                <div class="col-md-6 col-12 no-gutters">
                     <div class="speakers">
                         <strong>Performers</strong>
                         <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
@@ -39,23 +39,32 @@
                         <%= data.date %>
                     </div>
                     <div>
-                        <strong><%= data.type %></strong>
+                        <strong style="text-transform: uppercase;"><%= data.type %></strong>
                     </div>
                 </div>
-                <div class="col-md-6 no-gutters">
+                <div class="col-md-4 col-12 no-gutters">
                     <a data-element="reserve-btn" data-id="<%= data.id %>"
                         class=" btn btn-primary btn-rounded pull-right">
                         Reserve Ticket
                     </a>
                 </div>
+                <div class="col-md-2"></div>
             </div>
         </div>
         <div class="event_word">
             <div class="row justify-content-left" style="text-align: justify;">
-                <div class="col-md-12 col-12">
+                <div class="col-md-10 col-12">
                     <%= data.fact_sheet %>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Photo gallery section start -->
+<section class="pb100">
+    <div id="photo-gallery-container" class="row justify-content-center no-gutters">
+
+    </div>
+</section>
+<!-- Photo gallery section end -->

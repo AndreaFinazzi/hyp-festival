@@ -1,9 +1,3 @@
-const endpoints = {
-    userRegister: '/api/user/register',
-    userLogin: '/api/user/login',
-    userLogout: '/api/user/logout'
-}
-
 $(window).on('user-logged', function () {
     window.location = '/reservation';
 })

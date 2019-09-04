@@ -90,6 +90,7 @@ const staticRoutes = function(app) {
   compileTemplate('reservation/index', getStatics({ scripts: ['reservation.js']}));
 
   publicTemplate('slider_item');
+  publicTemplate('photo_box');
   publicTemplate('seminars/seminar_box');
   publicTemplate('seminars/details');
   publicTemplate('performers/details');
