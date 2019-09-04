@@ -38,9 +38,13 @@
                     <div class="event_date">
                         <%= data.date %>
                     </div>
+                    <div>
+                        <strong><%= data.type %></strong>
+                    </div>
                 </div>
                 <div class="col-md-6 no-gutters">
-                    <a data-element="reserve-btn" data-id="<%= data.id %>" class=" btn btn-primary btn-rounded pull-right">
+                    <a data-element="reserve-btn" data-id="<%= data.id %>"
+                        class=" btn btn-primary btn-rounded pull-right">
                         Reserve Ticket
                     </a>
                 </div>

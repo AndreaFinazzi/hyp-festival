@@ -3,21 +3,29 @@
         <div class="event_title">
             <%= data.title %>
         </div>
-
-        <img src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
-
+        <div class="speaker_box">
+            <div class="speaker_img">
+                <img src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
+                <div class="info_box">
+                    <a href="/performers?id=<%= data.id %>"></a>
+                    <h5 class="name"><%= data.date %></h5>
+                    <p class="position"><%= data.type %></p>
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="row pt15">
             <div class="col-md-6 no-gutters">
                 <div class="speakers">
                     <strong>Performers</strong>
                     <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
                 </div>
-                <div class="event_date">
+                <!-- <div class="event_date">
                     <%= data.date %>
-                </div>
+                </div> -->
             </div>
-            <div class="col-md-6 no-gutters">
-                <a  data-element="reserve-btn" data-id="<%= data.id %>" class=" btn btn-primary pull-right">
+            <div class="col-md-6 no-gutters" style="color: white;">
+                <a data-element="reserve-btn" data-id="<%= data.id %>" class=" btn btn-primary pull-right">
                     Reserve Ticket
                 </a>
             </div>

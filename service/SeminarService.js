@@ -13,7 +13,10 @@ var schema = dataLayer.schema;
  **/
 exports.getSeminar = function() {
   return new Promise(function(resolve, reject) {
-    resolve(db.select().table(schema.tables.SEMINAR));
+    resolve(
+      db.select(schema.tables.SEMINAR + ".*", schema.tables.PHOTO + ".path").table(schema.tables.SEMINAR)
+      .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+      );
   });
 }
 
@@ -43,7 +46,11 @@ exports.getSeminarByArtisticEvent = function(id_artistic_event) {
  **/
 exports.getSeminarById = function(id_seminar) {
   return new Promise(function(resolve, reject) {
-    resolve(db.select().table(schema.tables.SEMINAR).where('id', id_seminar));
+    resolve(
+      db.select(schema.tables.SEMINAR + ".*", schema.tables.PHOTO + ".path").table(schema.tables.SEMINAR)
+      .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)   
+      .where(schema.tables.SEMINAR + '.' + schema.fields.PK, id_seminar)
+      );
   });
 }
 

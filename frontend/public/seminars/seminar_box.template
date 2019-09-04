@@ -1,5 +1,5 @@
 <div class="blog_card">
-    <img src="/assets/img/blog/blog1.png" alt="blog News ">
+    <img src="/assets/img/<%= data.path %>" alt="<%= data.title %>">
     <div class="blog_box_data">
         <span class="blog_date">
             <%= data.date %> 

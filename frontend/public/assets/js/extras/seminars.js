@@ -9,8 +9,22 @@ $(document).ready(() => {
 })
 
 const init = () => {
-    renderSeminarBox(endpoints.getAll);
+    url = new URLSearchParams(window.location.search);
+
+    if (url.has('id')) {
+        renderSeminarDetails(endpoints.getAll + url.get('id'));
+    } else {
+        renderSeminarBox(endpoints.getAll);
+    }
 }
 
 // component-rendering functions
 const renderSeminarBox = endpoint => contentRenderer.renderJoinObject(endpoint, endpoints.getEventsBySeminar, 'seminars/seminar_box', '#seminar-box-container', () => $(window).trigger('resize.px.parallax'));
+
+// component-rendering functions
+const renderSeminarDetails = endpoint => {
+    contentRenderer.renderJoinObject(endpoint, endpoints.getEventsBySeminar, 'seminars/details', 'div.main-content', (items) => {
+        $('.parallax-window').parallax({imageSrc: '/assets/img/' + items[0].path});
+        $(window).trigger('resize.px.parallax');
+    }, emptyContainer = true);
+}
