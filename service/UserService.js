@@ -37,7 +37,7 @@ exports.logUser = function (email, password) {
         else {
           //email found case
           if (bcrypt.compareSync(password, result[0].password)) {
-            result[0].password = null;
+            delete result[0].password;
             return resolve(result);
           }
           else

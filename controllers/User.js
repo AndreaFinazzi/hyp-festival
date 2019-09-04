@@ -32,7 +32,7 @@ module.exports.logUser = function logUser(req, res, next) {
       req.session.loggedIn = true;
       req.session.logged_id = response[0].id;
 
-      // utils.writeJson(res, response);
+      utils.writeJson(res, response);
       if (req.header('Referer').includes('?'))
         res.redirect(307, req.header('Referer') + "&type=login&success=true");
       else
@@ -40,7 +40,7 @@ module.exports.logUser = function logUser(req, res, next) {
       res.end();
     })
     .catch(function (response) {
-      // utils.writeJson(res, response, response.status);
+      utils.writeJson(res, response, response.status);
       res.redirect(307, "/registration?type=login&success=false");
       res.end();
     });
