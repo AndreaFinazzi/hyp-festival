@@ -6,7 +6,8 @@ const dayNames = ["Tuesday", "Wednesday", "Thursday", "Friday", "Sunday", "Monda
 
 const endpoints = {
     getContentByName: '/api/content/',
-    getPhotoGallery: '/api/photo/by_artistic_event/',
+    getPhotoGalleryByArtisticEvent: '/api/photo/by_artistic_event/',
+    getPhotoGalleryByPerformer: '/api/photo/by_performer/',
 
     getArtisticEventAll: '/api/artistic_event/',
     getArtisticEventByType: '/api/artistic_event/by_type/',

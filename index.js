@@ -82,7 +82,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 const staticRoutes = function(app) {
 
   compileTemplate('index', getStatics({ scripts: ['index.js'] }));
-  compileTemplate('events/index', getStatics({ scripts: ['events.js'] }));
+  compileTemplate('events/index', getStatics({ scripts: ['events.js', 'bootstrap-datepicker.min.js'], styles: ['bootstrap-datepicker3.min.css'] }));
   compileTemplate('performers/index', getStatics({ scripts: ['performers.js'] }));
   compileTemplate('seminars/index', getStatics({ scripts: ['seminars.js'] }));
   compileTemplate('contacts', getStatics({ scripts: ['contacts.js'], renderer: false }));

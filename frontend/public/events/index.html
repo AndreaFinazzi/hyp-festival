@@ -25,6 +25,8 @@
     <!-- Custom styles for this template -->
     <link href="/assets/css/main.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="/assets/css/extras/bootstrap-datepicker3.min.css">
+    
 </head>
 
 </html>
@@ -105,13 +107,18 @@
     <div class="container">
         <div class="form-group">
             <label>Filter by type</label>
-            <select id="event-type-select" class="form-control py-0" title="Scegli una opzione">
+            <select id="event-type-select" class="form-control py-0" title="Scegli una opzione" style="height: 40px;">
                 <option value="" disabled selected>-- Type filter --</option>
                 <option value="opera">Opera</option>
                 <option value="theater">Theater</option>
                 <option value="dance">Dance</option>
                 <option value="music">Music</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label>Filter by date</label>
+            <input id='event-date-select' type='text' class="form-control py-0" style="height: 40px;"/>
+            <input id="event-date-today" type="submit" class="btn btn-md" value="Today">
         </div>
         <div id="event-box-container">
             
@@ -278,6 +285,8 @@
 <script src="/assets/js/contentRenderer.js"></script>
 
 <script src="/assets/js/extras/events.js"></script>
+
+<script src="/assets/js/extras/bootstrap-datepicker.min.js"></script>
 
 
 </body>

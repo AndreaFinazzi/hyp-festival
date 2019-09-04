@@ -22,7 +22,7 @@ const renderPerformerDetails = endpoint => {
     contentRenderer.renderJoinObject(endpoint, endpoints.getArtisticEventByPerformer, 'performers/details', 'div.main-content', (items) => {
         $('.parallax-window').parallax({imageSrc: '/assets/img/' + items[0].path});
 
-        contentRenderer.renderPhotoBox(endpoints.getPhotoGallery + items[0].id);
+        contentRenderer.renderPhotoBox(endpoints.getPhotoGalleryByPerformer + items[0].id);
 
         $(window).trigger('resize.px.parallax');
     }, emptyContainer = true);

@@ -14,7 +14,7 @@ exports.getArtisticEvent = function () {
     resolve(
       db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
         .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
-        .options({ nestTables: true})
+        .options({ nestTables: true })
     );
   });
 }
@@ -29,7 +29,9 @@ exports.getArtisticEvent = function () {
 exports.getArtisticEventByDate = function (date) {
   return new Promise(function (resolve, reject) {
     resolve(
-      db.select().table(schema.tables.ARTISTIC_EVENT).where(schema.fields.DATE, "=", date)
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .where(schema.fields.DATE, "=", date)
     );
   });
 }
@@ -47,7 +49,7 @@ exports.getArtisticEventById = function (id_artistic_event) {
       db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
         .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
         .where(schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, "=", id_artistic_event)
-        .options({ nestTables: true})
+        .options({ nestTables: true })
     );
   });
 }
@@ -62,7 +64,8 @@ exports.getArtisticEventById = function (id_artistic_event) {
 exports.getArtisticEventByPerformer = function (id_performer) {
   return new Promise(function (resolve, reject) {
     resolve(
-      db.select(schema.tables.ARTISTIC_EVENT + '.*').table(schema.tables.ARTISTIC_EVENT)
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
         .innerJoin(schema.tables.PERFORMANCE, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.fields.FK + schema.tables.ARTISTIC_EVENT)
         .innerJoin(schema.tables.PERFORMER, schema.tables.PERFORMER + "." + schema.fields.PK, schema.fields.FK + schema.tables.PERFORMER)
         .where(schema.tables.PERFORMER + "." + schema.fields.PK, "=", id_performer)
@@ -80,7 +83,9 @@ exports.getArtisticEventByPerformer = function (id_performer) {
 exports.getArtisticEventBySeminar = function (id_seminar) {
   return new Promise(function (resolve, reject) {
     resolve(
-      db.select().table(schema.tables.ARTISTIC_EVENT).where(schema.fields.FK + schema.tables.SEMINAR, "=", id_seminar)
+      db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .where(schema.fields.FK + schema.tables.SEMINAR, "=", id_seminar)
     );
   });
 }
@@ -96,8 +101,8 @@ exports.getArtisticEventByType = function (type) {
   return new Promise(function (resolve, reject) {
     resolve(
       db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
-      .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
-      .where(schema.fields.TYPE, "=", type)
+        .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
+        .where(schema.fields.TYPE, "=", type)
     );
   });
 }
@@ -111,12 +116,12 @@ exports.getArtisticEventByType = function (type) {
  **/
 exports.getArtisticEventsBookedByUser = function (id_user) {
   return new Promise(function (resolve, reject) {
-      resolve(
-        db.select(schema.tables.ARTISTIC_EVENT + '.*').table(schema.tables.ARTISTIC_EVENT)
-          .innerJoin(schema.tables.RESERVATION, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.fields.FK + schema.tables.ARTISTIC_EVENT)
-          .innerJoin(schema.tables.USER, schema.tables.USER + "." + schema.fields.PK, schema.fields.FK + schema.tables.USER)
-          .where(schema.tables.USER + "." + schema.fields.PK, "=", id_user)
-      );
+    resolve(
+      db.select(schema.tables.ARTISTIC_EVENT + '.*').table(schema.tables.ARTISTIC_EVENT)
+        .innerJoin(schema.tables.RESERVATION, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.fields.FK + schema.tables.ARTISTIC_EVENT)
+        .innerJoin(schema.tables.USER, schema.tables.USER + "." + schema.fields.PK, schema.fields.FK + schema.tables.USER)
+        .where(schema.tables.USER + "." + schema.fields.PK, "=", id_user)
+    );
   });
 }
 
