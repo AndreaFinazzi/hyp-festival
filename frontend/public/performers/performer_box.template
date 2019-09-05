@@ -1,9 +1,9 @@
 <%= if (data.index % 3 == 0) '<div class="row no-gutters">' %>
 <div class="col-12 col-md">
     <a href="/performers?id=<%= data.id %>">
-        <div class="speaker_box" style="height: 100%;">
-            <div class="speaker_img" style="height: 100%;">
-                <img src="/assets/img/<%= data.path %>" alt="<%= data.name %>" style="height: 100%; object-fit: cover;">
+        <div class="speaker_box">
+            <div class="speaker_img">
+                <img src="/assets/img/<%= data.path %>" alt="<%= data.name %>">
                 <div class="info_box">
                     <h5 class="name"><%= data.name %></h5>
                     <p class="position"><%= data.type %></p>

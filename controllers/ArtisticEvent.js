@@ -67,14 +67,3 @@ module.exports.getArtisticEventByType = function getArtisticEventByType (req, re
       utils.writeJson(res, response);
     });
 };
-
-module.exports.getArtisticEventsBookedByUser = function getArtisticEventsBookedByUser (req, res, next) {
-  var id_user = req.swagger.params['id_user'].value;
-  ArtisticEvent.getArtisticEventsBookedByUser(id_user)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};

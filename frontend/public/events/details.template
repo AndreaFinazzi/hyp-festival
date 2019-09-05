@@ -39,7 +39,7 @@
                         <%= data.date %>
                     </div>
                     <div>
-                        <strong style="text-transform: uppercase;"><%= data.type %></strong>
+                        <strong class="uppercase"><%= data.type %></strong>
                     </div>
                 </div>
                 <div class="col-md-4 col-12 no-gutters">

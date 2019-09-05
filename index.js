@@ -33,12 +33,7 @@ var swaggerDoc = jsyaml.safeLoad(spec);
 
 const staticDir = 'frontend/public/';
 
-//Configure passport
-//require('./utils/Passport')(passport);
-//module.exports.passport = passport;
-
 //Initialize the express-session middleware
-
 app.use(session({ secret: "secret",
                   resave: true,
                   saveUninitialized: true}));
@@ -50,9 +45,6 @@ app.use(cookieParser());
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
-
-  // app.set('views', 'frontend/public/templates');
-  // app.set('view engine', 'ejs');
 
   // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
   app.use(middleware.swaggerMetadata());
@@ -73,13 +65,20 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Start the server .listen(process.env.PORT || 5000)
   http.createServer(app).listen(process.env.PORT || serverPort, function () {
-    console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-    console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+    console.log('Your server is listening on port %d (http://localhost:%d)', process.env.PORT || serverPort, process.env.PORT || serverPort);
+    console.log('Swagger-ui is available on http://localhost:%d/docs', process.env.PORT || serverPort);
   });
 
 });
 
 const staticRoutes = function(app) {
+  app.use('/backend/spec.yaml', function (req, res) {
+    res.sendFile(__dirname + '/api/swagger.yaml');
+  })
+
+  app.use('/backend/swaggerui', function (req, res) {
+    res.redirect('/docs');
+  })
 
   compileTemplate('index', getStatics({ scripts: ['index.js'] }));
   compileTemplate('events/index', getStatics({ scripts: ['events.js', 'bootstrap-datepicker.min.js'], styles: ['bootstrap-datepicker3.min.css'] }));
@@ -101,33 +100,6 @@ const staticRoutes = function(app) {
   publicTemplate('events/reservation_modal');
   publicTemplate('reservation/reservation_box');
 
-  // app.use('/index', function (req, res) {
-  //   res.render('index.ejs', getStatics({ scripts: ['index.js'] }));
-  // });
-
-  // app.use('/events/:id', function (req, res) {
-  //   res.render('details.ejs', getStatics({ scripts: ['events.js'] }));
-  // });
-
-  // app.use('/events', function (req, res) {
-  //   res.render('events/index.ejs', getStatics({ scripts: ['events.js'] }));
-  // });
-  
-  // app.use('/performers', function (req, res) {
-  //   res.render('performers/index.ejs', getStatics({ scripts: ['performers.js'] }));
-  // });
-
-  // app.use('/seminars', function (req, res) {
-  //   res.render('seminars/index.ejs', getStatics({ scripts: ['seminars.js'] }));
-  // });
-
-  // app.use('/contacts', function (req, res) {
-  //   res.render('contacts.ejs', getStatics({ renderer: false }));
-  // });
-
-  // app.use(/^(?!^\/assets|\/templates|\/api).*$/, function (req, res) {
-  //   res.redirect('/index');
-  // });
 }
 
 const listFileIn = function (dir) {

@@ -9,7 +9,7 @@
                 <div class="info_box">
                     <a href="/performers?id=<%= data.id %>"></a>
                     <h5 class="name"><%= data.date %></h5>
-                    <p class="position" style="text-transform: uppercase;"><%= data.type %></p>
+                    <p class="position uppercase"><%= data.type %></p>
                     </a>
                 </div>
             </div>

@@ -241,31 +241,6 @@ paths:
         500:
           description: "Unexpected Error"
       x-swagger-router-controller: "ArtisticEvent"
-  /artistic_event/booked_by/{id_user}:
-    get:
-      tags:
-      - "artistic_event"
-      summary: "get all artistic events scheduled in the Festival booked by user passed\
-        \ as parameter."
-      operationId: "getArtisticEventsBookedByUser"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "id_user"
-        in: "path"
-        description: "id of the user."
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/ArtisticEvent"
-        500:
-          description: "Unexpected Error"
-      x-swagger-router-controller: "ArtisticEvent"
   /seminar:
     get:
       tags:
@@ -479,12 +454,12 @@ paths:
       parameters:
       - name: "email"
         in: "formData"
-        description: "email of the user to log"
+        description: "email of the user to log. Working example: marta.tarchetti@gmail.com"
         required: true
         type: "string"
       - name: "password"
         in: "formData"
-        description: "password of the user to log"
+        description: "password of the user to log. Working example: 123456"
         required: true
         type: "string"
         format: "password"

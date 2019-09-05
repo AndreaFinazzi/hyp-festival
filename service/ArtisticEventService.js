@@ -109,22 +109,3 @@ exports.getArtisticEventByType = function (type) {
   });
 }
 
-
-/**
- * get all artistic events scheduled in the Festival booked by user passed as parameter.
- *
- * id_user String id of the user.
- * returns List
- **/
-exports.getArtisticEventsBookedByUser = function (id_user) {
-  return new Promise(function (resolve, reject) {
-    resolve(
-      db.select(schema.tables.ARTISTIC_EVENT + '.*').table(schema.tables.ARTISTIC_EVENT)
-        .innerJoin(schema.tables.RESERVATION, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.fields.FK + schema.tables.ARTISTIC_EVENT)
-        .innerJoin(schema.tables.USER, schema.tables.USER + "." + schema.fields.PK, schema.fields.FK + schema.tables.USER)
-        .where(schema.tables.USER + "." + schema.fields.PK, "=", id_user)
-        .orderBy('date', 'asc')
-    );
-  });
-}
-
