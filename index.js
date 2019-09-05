@@ -91,6 +91,7 @@ const staticRoutes = function(app) {
 
   publicTemplate('slider_item');
   publicTemplate('photo_box');
+  publicTemplate('calendar_box');
   publicTemplate('seminars/seminar_box');
   publicTemplate('seminars/details');
   publicTemplate('performers/details');
