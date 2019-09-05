@@ -21,7 +21,7 @@
                     <span><%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></span>
                 </div>
             </div>
-            <div class="col-md-6 no-gutters" style="color: white;">
+            <div class="col-md-6 no-gutters">
                 <a data-element="reserve-btn" data-id="<%= data.id %>" class=" btn btn-primary pull-right">
                     Reserve Ticket
                 </a>
@@ -29,11 +29,11 @@
         </div>
     </div>
     <div class="event_word">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-12" style="text-align: justify;">
+        <div class="row justify-content-center justify">
+            <div class="col-md-6 col-12">
                 <%= data.abstract.split(' ').splice(0, Math.ceil(data.abstract.split(' ').length / 2)).join(' ') %>
             </div>
-            <div class="col-md-6 col-12" style="text-align: justify;">
+            <div class="col-md-6 col-12">
                 <%= data.abstract.split(' ').splice(Math.ceil(data.abstract.split(' ').length / 2)).join(' ') %>
             </div>
         </div>

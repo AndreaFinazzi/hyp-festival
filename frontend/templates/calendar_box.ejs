@@ -14,8 +14,8 @@
             <p>Performers: <%= data.joinItems.map(item => { return '<a href="/performers?id=' + item.id + '">' + item.name + ' </a>'}).join(', ') %></p>
         </div>
     </td>
-    <td class="event_date">
-        <span style="text-transform: uppercase;"><%= data.type %></span>
+    <td class="event_date uppercase">
+        <span><%= data.type %></span>
     </td>
     <td>
         <a href="/events?id=<%= data.id %>" class="btn btn-primary btn-rounded">Read More</a>

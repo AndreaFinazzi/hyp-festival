@@ -6,6 +6,37 @@ input[type=number] {
     min-width: max-content;
 }
 
+.justify {
+    text-align: justify !important;
+}
+
+.text-last-end {
+    text-align-last: end !important;
+}
+
+.uppercase {
+    text-transform: uppercase !important;
+}
+
+.btn.btn-primary {
+    color: white;
+}
+
+.event_calender.table {
+    min-width: auto;
+    margin: auto;
+}
+
+.speaker_box,
+.speaker_img {
+    height: 100%;
+}
+
+.speaker_img img {
+    height: 100%; 
+    object-fit: cover;
+}
+
 /* On screens that are 992px or less, set simplified breadcumbs */
 @media screen and (max-width: 1190px) {
 
