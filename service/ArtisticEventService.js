@@ -86,6 +86,7 @@ exports.getArtisticEventBySeminar = function (id_seminar) {
       db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
         .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
         .where(schema.fields.FK + schema.tables.SEMINAR, "=", id_seminar)
+        .orderBy('date', 'asc')
     );
   });
 }
@@ -103,6 +104,7 @@ exports.getArtisticEventByType = function (type) {
       db.select(schema.tables.ARTISTIC_EVENT + ".*", schema.tables.PHOTO + ".path").table(schema.tables.ARTISTIC_EVENT)
         .leftJoin(schema.tables.PHOTO, schema.tables.PHOTO + "." + schema.fields.PK, schema.fields.FK + schema.tables.PHOTO)
         .where(schema.fields.TYPE, "=", type)
+        .orderBy('date', 'asc')
     );
   });
 }
@@ -121,6 +123,7 @@ exports.getArtisticEventsBookedByUser = function (id_user) {
         .innerJoin(schema.tables.RESERVATION, schema.tables.ARTISTIC_EVENT + "." + schema.fields.PK, schema.fields.FK + schema.tables.ARTISTIC_EVENT)
         .innerJoin(schema.tables.USER, schema.tables.USER + "." + schema.fields.PK, schema.fields.FK + schema.tables.USER)
         .where(schema.tables.USER + "." + schema.fields.PK, "=", id_user)
+        .orderBy('date', 'asc')
     );
   });
 }

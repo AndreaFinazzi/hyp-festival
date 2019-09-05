@@ -18,7 +18,7 @@ $(document).ready(function () {
 logout = function() {
     fetch('/api/user/logout')
     .then(response => {
-        window.location = response.url;
+        window.location = '/?type=logout&success=true';
     })
     $(window).trigger('load');
 }

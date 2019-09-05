@@ -21,7 +21,7 @@ module.exports.getUser = function getUser(req, res, next) {
   else
     utils.writeJson(res, { status: 401, message: "You aren't logged" }, 401);
 };
-  
+
 module.exports.logUser = function logUser(req, res, next) {
   var email = req.swagger.params['email'].value;
   var password = req.swagger.params['password'].value;
@@ -32,26 +32,16 @@ module.exports.logUser = function logUser(req, res, next) {
       req.session.loggedIn = true;
       req.session.logged_id = response[0].id;
 
-      //utils.writeJson(res, response);
-      if (req.header('Referer').includes('?'))
-        res.redirect(307, req.header('Referer') + "&type=login&success=true");
-      else
-        res.redirect(307, req.header('Referer') + "?type=login&success=true");
-      res.end();
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
-      // utils.writeJson(res, response, response.status);
-      res.redirect(307, "/registration?type=login&success=false");
-      res.end();
+      utils.writeJson(res, response, response.status);
     });
 };
 
 module.exports.logOutUser = function logOutUser(req, res, next) {
-
   req.session.destroy();
-  res.redirect(307, "/?type=logout&success=true");
-  res.end();
-
+  utils.writeJson(res,{status: 200, message: "Successful operation"});
 }
 
 module.exports.registerUser = function registerUser(req, res, next) {
@@ -72,16 +62,11 @@ module.exports.registerUser = function registerUser(req, res, next) {
 
   User.registerUser(body)
     .then(function (response) {
-      // utils.writeJson(res, response);
-      res.redirect(307, "/registration?type=registration&success=true");
-      res.end();
-
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
       if (response.status) {
-        // utils.writeJson(res, response, response.status);
-        res.redirect(307, "/registration?type=registration&success=false");
-        res.end();
+        utils.writeJson(res, response, response.status);
       }
     });
 };

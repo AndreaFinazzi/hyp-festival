@@ -48,7 +48,7 @@ $(window).load(function () {
             }
         })
         .then(result => {
-            if (result[0].id) {
+            if (result[0].id || result[0].id == 0) {
                 // user logged
                 window.user.logged = true;
                 window.user.id = result[0].id;

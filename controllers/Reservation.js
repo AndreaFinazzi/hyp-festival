@@ -31,19 +31,9 @@ module.exports.postReservation = function postReservation (req, res, next) {
     Reservation.postReservation(id_user, id_artistic_event, quantity)
         .then(function (response) {
           utils.writeJson(res,{status: 200, message: "Successful operation"});
-          
-          if (req.header('Referer').includes('?'))
-            res.redirect(307, req.header('Referer') + "&type=reservation&success=true");
-          else
-            res.redirect(307, req.header('Referer') + "?type=reservation&success=true");
-          res.end();
-          
-          
         })
         .catch(function (response) {
-          utils.writeJson(res,{status: 401, message: "Something goes wrong"}, 401);
-          res.redirect(307, "/?type=reservation&success=false");
-          res.end();
+          utils.writeJson(res,  {status: 401, message: "Something goes wrong"}, 401);
         });
 
   }

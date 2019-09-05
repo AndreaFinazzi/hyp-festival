@@ -75,9 +75,8 @@ var contentRenderer = (function () {
         },
 
         renderReservationModal: function (endpoint) {
-            url = new URLSearchParams(window.location.search);
             this.renderJoinObject(endpoint, endpoints.getPerformerByEvent, 'events/reservation_modal', 'div.main-content', (items) => {
-                $('#confirm-reservation').click(function() {
+                $('#confirm-reservation').click(function () {
                     let quantity = $('#quantity-selector').val();
                     fetch('/api/reservation', {
                         method: 'POST',
@@ -87,18 +86,18 @@ var contentRenderer = (function () {
                         },
                         redirect: 'follow'
                     })
-                    .then(response => {
-                        if (url.has('id'))
-                            window.location = "&type=reservation&success=true";
-                        else
-                            window.location = "?type=reservation&success=true";
-                    })
-                    .catch(result => {
-                        console.log(result.text());
-                        window.location = response.url;
-                    })
+                        .then(response => {
+                            if (response.ok) {
+                                window.location = "?type=reservation&success=true";
+                            } else
+                                window.location = "/?type=reservation&success=false";
+
+                        })
+                        .catch(result => {
+                            window.location = "/?type=reservation&success=false";
+                        })
                 });
-        
+
                 $('#reservation-modal').modal();
                 $('#reservation-modal').on('hidden.bs.modal', function (event) {
                     $('#reservation-modal').remove();
@@ -112,18 +111,18 @@ var contentRenderer = (function () {
 
         renderPageContent: function (endpoint, module = 'main') {
             fetch(endpoint)
-            .then(response => {
-                return response.json();
-            })
-            .then(result => {
-                $('[data-module=' + module + '] #content-title').html(result[0].title);
-                $('[data-module=' + module + '] #content-body').html(result[0].content);
-        
-                if (result[0].path) {
-                    $('.parallax-window').parallax({imageSrc: '/assets/img/' + result[0].path});
-                }
-                $(window).trigger('resize.px.parallax');
-            })
+                .then(response => {
+                    return response.json();
+                })
+                .then(result => {
+                    $('[data-module=' + module + '] #content-title').html(result[0].title);
+                    $('[data-module=' + module + '] #content-body').html(result[0].content);
+
+                    if (result[0].path) {
+                        $('.parallax-window').parallax({ imageSrc: '/assets/img/' + result[0].path });
+                    }
+                    $(window).trigger('resize.px.parallax');
+                })
         }
     }
 })();

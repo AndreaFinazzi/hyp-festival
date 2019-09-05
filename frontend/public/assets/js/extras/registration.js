@@ -7,7 +7,7 @@ $(window).load(function () {
 
     var onForm = $("#on-form");
     var inForm = $("#in-form");
-    
+
     if (url.has('type') && url.get('type') == 'login') {
         if (url.get('success') == 'false') {
             $('#in-message').text('Invalid credentials, try again.');
@@ -49,13 +49,15 @@ $(window).load(function () {
             },
             redirect: 'follow'
         })
-        .then(response => {
-            window.location = response.url;
-        })
-        .catch(result => {
-            console.log(result.text());
-            window.location = response.url;
-        })
+            .then(response => {
+                if (response.ok)
+                    window.location = "/registration?type=registration&success=true";
+                else
+                    window.location = "/registration?type=registration&success=false";
+            })
+            .catch(result => {
+                window.location = "/registration?type=registration&success=false";                
+            })
     }
 
     const login = function () {
@@ -75,9 +77,12 @@ $(window).load(function () {
             },
             redirect: 'follow'
         })
-        .then(response => {
-            window.location = response.url;
-        })
-        .catch(result => console.log(result.text()))
+            .then(response => {
+                if (response.ok) {
+                    window.location = "?type=login&success=true";
+                } else
+                    window.location = "/registration?type=login&success=false";
+            })
+            .catch(result => window.location = "/registration?type=login&success=false")
     }
 })
