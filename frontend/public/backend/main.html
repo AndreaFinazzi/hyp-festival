@@ -1,247 +1,100 @@
-<html>
-
-<h1 id="documentationofthebackendpart">Documentation of the Backend part</h1>
-
+<h1 id="documentation-of-the-backend-part">Documentation of the Backend part</h1>
 <blockquote>
-  <p>Deliverable D1</p>
+<p>Deliverable D1</p>
 </blockquote>
-
-<h2 id="generalgroupinformation">General group information</h2>
-
-<p>| Member n. | Role          | First name | Last Name | Matricola | Email address                      |
-|-----------|---------------|------------|-----------|-----------|------------------------------------|
-| 1         | administrator | Andrea     | Finazzi   | 868454    | andrea1.finazzi@mail.polimi.it     |
-| 2         |               | Pietro     | Forconi   | 866782    | pietro.forconi@mail.polimi.it      |
-| 3         |               | Marco Furio| Colombo   | 865784    | marcofurio.colombo@mail.polimi.it  |</p>
-
-<h2 id="linkstootherdeliverables">Links to other deliverables</h2>
-
+<h2 id="general-group-information">General group information</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Member n.</th>
+<th>Role</th>
+<th>First name</th>
+<th>Last Name</th>
+<th>Matricola</th>
+<th>Email address</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>administrator</td>
+<td>Andrea</td>
+<td>Finazzi</td>
+<td>868454</td>
+<td>andrea1.finazzi@mail.polimi.it</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td>Pietro</td>
+<td>Forconi</td>
+<td>866782</td>
+<td>pietro.forconi@mail.polimi.it</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td>Marco Furio</td>
+<td>Colombo</td>
+<td>865784</td>
+<td>marcofurio.colombo@mail.polimi.it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="links-to-other-deliverables">Links to other deliverables</h2>
 <ul>
-<li>Deliverable D0: the web application is accessible at <a href="https://example.com">this
-address</a>.</li>
-
-<li>Deliverable D2: the YAML or JSON file containing the specification
-of the app API can be found at <a href="https://example.com/backend/spec.yaml">this
-address</a>.</li>
-
-<li>Deliverable D3: the SwaggerUI page of the same API is available at
-<a href="https://example.com/backend/swaggerui">this address</a>.</li>
-
-<li>Deliverable D4: the source code of D0 is available as a zip file at
-<a href="https://example.com/backend/app.zip">this address</a>.</li>
-
-<li>Deliverable D5: https://github.com/AndreaFinazzi/hyp-festival</li>
+<li>Deliverable D0: the web application is accessible at https://hyp-festival-2019.herokuapp.com/</li>
+<li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at https://hyp-festival-2019.herokuapp.com/backend/spec.yaml</li>
+<li>Deliverable D3: the SwaggerUI page of the same API is available at https://hyp-festival-2019.herokuapp.com/backend/swaggerui</li>
+<li>Deliverable D4: the source code of D0 is available as a zip file at https://hyp-festival-2019.herokuapp.com/backend/app.zip</li>
+<li>Deliverable D5: the repository of github is private and is: https://github.com/AndreaFinazzi/hyp-festival</li>
 </ul>
-
 <h2 id="specification">Specification</h2>
-
-<h3 id="webarchitecture">Web Architecture</h3>
-
-<hr />
-
-<p>Describe here, with a diagram, the components of your web application
-and how they interact. Highlight which parts belong to the application
-layer, data layer or presentation layer. How did you ensure that HTML is</p>
-
-<h2 id="notrenderedserverside">not rendered server side?</h2>
-
-<p>//inserisco diagramma</p>
-
-<p>//finaz</p>
-
+<h3 id="web-architecture">Web Architecture</h3>
+<head>
+        <title>Untitled Diagram</title>
+        <meta charset="utf-8"/>
+        </head>
+        <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile modified=\&quot;2019-08-31T17:52:19.411Z\&quot; host=\&quot;www.draw.io\&quot; agent=\&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Safari/605.1.15\&quot; etag=\&quot;1PuoKklIq9FZlWhAxvfw\&quot; version=\&quot;11.2.4\&quot; type=\&quot;google\&quot; pages=\&quot;1\&quot;&gt;&lt;diagram name=\&quot;Page-1\&quot; id=\&quot;e3a06f82-3646-2815-327d-82caf3d4e204\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+        <script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+        </body>
+<p>We only render HTML at server startup, generating static content from .ejs templates. This practice allows us to optimize layout production keeping the code clean and readable. At runtime, the entire presentation logic is served to the client statically, so that js code interacts with application layer autonomously from the client.</p>
 <h3 id="api">API</h3>
-
-<h4 id="restcompliance">REST compliance</h4>
-
-<hr />
-
-<p>Describe here to what extent did you follow REST principles and what are
-the reasons for which you might have decided to diverge. Note, you must</p>
-
-<h2 id="notdescribethewholeapiherejustthedesigndecisions">not describe the whole API here, just the design decisions.</h2>
-
-<p>We decided to follow the REST principles in our API.
-We used GET methods which return as application/json format the data about our models and
-POST methods which insert data inside the modeles tables.</p>
-
-<p>These principles in practices are implemented with a postgres database which contains our model
-as database's tables, when the client request a service, the server calls a query to the database 
-which provides data requested, the server incapsulate data as application/json format and send back
-the response to the client.</p>
-
-<h2 id="openapiresourcemodels">#### OpenAPI Resource models</h2>
-
-<p>Describe here synthetically, which models you have introduced for</p>
-
-<h2 id="resources">resources.</h2>
-
-<p>The models that we decided to introduce for resources are:
-'performer', 'seminar', 'artistic_event', 'user', 'reservation' and 'photo'.</p>
-
-<p>GET methods are provided for every model and returns data in different ways (all data in the table, by id, 
-by relationship with other models, depends by the table) and POST methods are provided just for 'user' 
-(to allow registration and login) and 'reservation' (to allow a booking for an artistic_event by a logged user).</p>
-
-<h3 id="datamodel">Data model</h3>
-
-<hr />
-
-<p>Describe with an ER diagram the model used in the data layer of your web</p>
-
-<h2 id="applicationhowthesemaptotheopenapidatamodel">application. How these map to the OpenAPI data model?</h2>
-
-<p>//Appends the ER diagram</p>
-
-<p>The OpenAPI data model contains the same table that we have in our data layer, 
-the difference is that the data layer contains also private informations (for example, the field
-'password' in the 'user' table) and tables which are deputed only to 
-match relationship between two tables, but that are not real "entities",
-we have 'photo_gallery' and 'performance' tables which have this role.</p>
-
+<h4 id="rest-compliance">REST compliance</h4>
+<p>We decided to follow the REST principles in our API. We used GET methods which return as application/json format the data about our models and POST methods which insert data inside the modeles tables.</p>
+<p>We diverged from the stateless REST principle in the Reservation GET method, because the server keeps the information about the user session. The same is true for the Log Out method.</p>
+<h4 id="openapi-resource-models">OpenAPI Resource models</h4>
+<p>The models which we decided to introduce for resources are: "performer", "seminar", "artistic_event", "user", "reservation" and "photo". GET methods are provided for every model and returns data in different ways (all data in the table, by id, by relationship with other models, depends by the table) and POST methods are provided just for "user" (to allow registration and login) and "reservation" (to allow a booking for one or more artistic_event by a logged user).</p>
+<h3 id="data-model">Data model</h3>
+<head>
+        <title>er</title>
+        <meta charset="utf-8"/>
+        </head>
+        <body><div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile modified=\&quot;2019-09-01T14:00:59.093Z\&quot; host=\&quot;www.draw.io\&quot; agent=\&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Safari/605.1.15\&quot; etag=\&quot;H2FEksTOO24X1thN30dC\&quot; pages=\&quot;1\&quot; version=\&quot;11.2.4\&quot; type=\&quot;google\&quot;&gt;&lt;diagram name=\&quot;Page-1\&quot; id=\&quot;e56a1550-8fbb-45ad-956c-1786394a9013\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+        <script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+        </body>
+<p>The OpenAPI data model contains the same table that we have in our data layer, the difference is that the data layer contains also private informations (for example, the field "password" in the "user" table) and tables which are deputed only to match relationship between two tables, but that are not real "entities", we have "photo_gallery" and "performance" tables which have this role.</p>
 <h2 id="implementation">Implementation</h2>
-
-<h2 id="toolsused">### Tools used</h2>
-
-<p>Describe here which tools, languages and frameworks did you use for the</p>
-
-<h2 id="backendoftheapplication">backend of the application.</h2>
-
-<p>We have started preparing our OpenAPI with SwaggerUI and a Postgres database,
-after that we generated the NodeJS Server using the SwaggerUI function.
-We managed our database using PgAdmin.
-In our backend application we used some packages:
-"express JS" to launch the server, "express-session" for session management, "knex" for
-the queries, "swagger-tools" which manages requests and responses client - data layer and 
-data layer - client.</p>
-
+<h3 id="tools-used">Tools used</h3>
+<p>We have started preparing our OpenAPI with SwaggerUI and a Postgres database, after that we generated the NodeJS Server using the SwaggerUI function. We managed our database using PgAdmin. In our backend application we used some packages: "express JS" to launch the server, "express-session" for session management, "knex" for the db queries, "swagger-tools" which manages requests and responses client - data layer and data layer - client.</p>
 <h3 id="discussion">Discussion</h3>
-
-<h2 id="describehere">Describe here:</h2>
-
 <ul>
-<li>How did you make sure your web application adheres to the provided
-OpenAPI specification? Which method did you use to test all APIs</li>
+<li><p>We tested all GET and POST methods of our web application, with the swagger function accessible by "/docs" url which is connected to our backend, we verified that the response adheres as expected in every particular case: login and registration POST with invalid credentials, GET/POST reservation without being logged, plus - of course - all the others public GET.</p></li>
+<li><p>Our web application acts on static assets exclusively during startup, playing as a classic REST API service provider for the rest of his time.</p></li>
+<li><p>We manage session state because the client must be able to book one or more ticket for the artistic events, so we had to implement the login/registration function. We used express-session and inside the "controllers" function which manages the login, if the client inserted valid credentials we access to the field "req.session" and set as "true", a read/write field created by us that we called "logged_in" (accessed as "req.session.logged_in"), and in another field called "logged_id" (accessed as "req.session.logged_id") we saved the id of the user that is logged, this allow us to make the queries to show the private user information and to post or see the user reservations.</p></li>
+<li><p>We used a relational database for managing the data model. In order to the common rules of a relational database we have relational tables "performance", "photo gallery", which are deputed only to match different table informations (they are not real entities), we also setted as Foreign keys every column of the tables that have a relationship with an element of another table.</p></li>
 </ul>
-
-<h2 id="endpointsagainsttheexpectedresponse">    endpoints against the expected response?</h2>
-
-<ul>
-<li>We tested all GET and POST methods of our web application, with the swagger function
-accessible by "/docs" url which is connected to our backend, we verified that the response
-adheres as expected in every particular case: login and registration POST with 
-invalid credentials, GET/POST reservation without being logged, plus - of course - 
-all the others public GET.</li>
-</ul>
-
-<hr />
-
-<ul>
-<li>Why do you think your web application adheres to common practices to
-partition a REST-based web application (static assets vs.</li>
-</ul>
-
-<h2 id="applicationdata">    application data)</h2>
-
-<ul>
-<li>We think that our web application adheres to common practices to partition 
-a REST-based web application because we contain all the data inside a database
-accessed with query methods by the server after a request that came from the client, 
-the only static assets that the client could see are about the template of our web 
-application, which doesn't contain any information that may change in the future.</li>
-</ul>
-
-<hr />
-
-<ul>
-<li>Describe synthetically why and how did you manage session state,
-what are the state change triggering actions (e.g., POST to login</li>
-</ul>
-
-<h2 id="etc">    etc..).</h2>
-
-<ul>
-<li>We manage session state because the client must be able to book one or more
-ticket for the artistic events, so we had to implement the login/registration function.
-We used express-session and inside the "controllers" function which manages the login, 
-if the client inserted valid credentials we access to the field "req.session" and set as "true",
-a read/write field created by us that we called "logged<em>in" (accessed as "req.session.logged</em>in"), 
-and in another field called "logged<em>id" (accessed as "req.session.logged</em>id") we saved the id 
-of the user that is logged, this allow us to make the queries
-to show the private user information and to post or see the user reservations.</li>
-</ul>
-
-<hr />
-
-<ul>
-<li>Which technology did you use (relational or a no-SQL database) for</li>
-</ul>
-
-<h2 id="managingthedatamodel">    managing the data model?</h2>
-
-<ul>
-<li>We used a relational database for managing the data model.
-In order to the common rules of a relational database we have relational tables
-"performance", "photo gallery", which are deputed only to match different table informations
-(they are not real entities), we also setted as Foreign keys every column of the tables that 
-have a relationship with an element of another table.</li>
-</ul>
-
-<h2 id="otherinformation">Other information</h2>
-
-<h2 id="taskassignment">### Task assignment</h2>
-
-<p>Describe here how development tasks have been subdivided among members
-of the group, e.g.:</p>
-
+<h2 id="other-information">Other information</h2>
+<h3 id="task-assignment">Task assignment</h3>
 <blockquote>
-  <ul>
-  <li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
-  </ul>
-  
-  <h2 id="barworkedon">-   Bar worked on ....</h2>
-  
-  <p>Pietro Forconi: OpenAPI, backend queries, backend session-state management, backend documentation, frontend (10%).
-  Andrea Finazzi: Created database, backend queries, backend general settings, frontend (80%).
-  Marco Furio Colombo: Manages database, design and usability documentation, frontend (10%).</p>
+<p>Pietro Forconi: OpenAPI, backend queries, backend session-state management, backend documentation, frontend. <br>
+Andrea Finazzi: Created database, backend queries, backend general settings, frontend. <br>
+Marco Furio Colombo: Manages database, design and usability documentation, frontend.</p>
 </blockquote>
-
-<h2 id="analysisofexistingapi">### Analysis of existing API</h2>
-
-<p>Describe here the research of (full or part of) existing APIs that are similar
-in objectives and scope to the one implemented, that have possibly guided
-implementation choices (these should not be necessarily OpenAPI
-implementations). Toy APIs (such as the Swagger's Pet Store) or the example
-shown during lectures are not a valid response.
-Use TWO or more items of the form:</p>
-
-<blockquote>
-  <p>We took (full/partial) inspiration from API <XYZ>(link) for the part of the
-  API that manages <ABC> because of <REASON>.
-  Or
-  For the part of the API that manages <ABC> we considered/studied <XYZ>(link)
-  because of <REASON> but wasn't completely fitting to our purpose because of</p>
-  
-  <h2 id="reason"><REASON>.</h2>
-</blockquote>
-
-<p>We Studied the OpenAPI language by the web site of Swagger "swagger.io", 
-we understood how to set the document by the pre-set example of the petStore (for example
-the order division of the fields "info","host", "basePath", "tags", "schemes", "path", "definitions"),
-after tht we understood from the petStore example role of the fields inside "paths" and what we didn't
-understand we searched the meanings and the functionality on the documentation avaliable at the 
-"swagger.io" website.</p>
-
-<h2 id="learningoutcome">### Learning outcome</h2>
-
-<p>What was the most important thing all the members have learned while
-developing this part of the project, what questions remained unanswered,</p>
-
-<h2 id="howyouwillusewhatyouvelearnedinyoureverydaylife">how you will use what you've learned in your everyday life?</h2>
-
-<p>We understood what are the REST principles of a web application and also that a web application
-is not the same of a web site. 
-We learned OpenAPI language from zero, we improved our sql knowledge applied in a real database, 
-how to manage the datas, we took confidence with NodeJS, HTML and CSS and we learned how to 
-integrate them together.</p>
-
-</html>
+<h3 id="analysis-of-existing-api">Analysis of existing API</h3>
+<p>We Studied the OpenAPI language by the web site of Swagger "swagger.io", we understood how to set the document by the pre-set example of the petStore (for example the order division of the fields "info","host", "basePath", "tags", "schemes", "path", "definitions"), after tht we understood from the petStore example role of the fields inside "paths" and what we didn"t understand we searched the meanings and the functionality on the documentation avaliable at the "swagger.io" website.</p>
+<h3 id="learning-outcome">Learning outcome</h3>
+<p>We understood what are the REST principles of a web application and also that a web application is not the same of a web site. We learned OpenAPI language from zero, we improved our sql knowledge applied in a real database, how to manage the datas, we took confidence with NodeJS, HTML and CSS and we learned how to integrate them together. <br>
+Pietro learned about REST principles, OpenApi and backend with NodeJS. <br>
+Andrea learned common principles of client side HTML rendering enforcing js without the help of enterprise frontend frameworks.<br>
+Marco improved his skills with model database and the postgres interaction with it. </p>
