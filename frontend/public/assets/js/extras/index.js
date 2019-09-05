@@ -57,15 +57,6 @@ const initSlider = function () {
             },
             items: 3
         });
-
-
-        $(".countdown")
-            .countdown("2019/12/01", function (event) {
-                $(this).html(
-                    event.strftime('<div>%w <span>Weeks</span></div>  <div>%D <span>Days</span></div>  <div>%H<span>Hours</span></div> <div>%M<span>Minutes</span></div> <div>%S<span>Seconds</span></div>')
-                );
-            });
-
     });
 }
 
