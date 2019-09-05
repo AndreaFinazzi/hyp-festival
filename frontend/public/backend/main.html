@@ -1,0 +1,247 @@
+<html>
+
+<h1 id="documentationofthebackendpart">Documentation of the Backend part</h1>
+
+<blockquote>
+  <p>Deliverable D1</p>
+</blockquote>
+
+<h2 id="generalgroupinformation">General group information</h2>
+
+<p>| Member n. | Role          | First name | Last Name | Matricola | Email address                      |
+|-----------|---------------|------------|-----------|-----------|------------------------------------|
+| 1         | administrator | Andrea     | Finazzi   | 868454    | andrea1.finazzi@mail.polimi.it     |
+| 2         |               | Pietro     | Forconi   | 866782    | pietro.forconi@mail.polimi.it      |
+| 3         |               | Marco Furio| Colombo   | 865784    | marcofurio.colombo@mail.polimi.it  |</p>
+
+<h2 id="linkstootherdeliverables">Links to other deliverables</h2>
+
+<ul>
+<li>Deliverable D0: the web application is accessible at <a href="https://example.com">this
+address</a>.</li>
+
+<li>Deliverable D2: the YAML or JSON file containing the specification
+of the app API can be found at <a href="https://example.com/backend/spec.yaml">this
+address</a>.</li>
+
+<li>Deliverable D3: the SwaggerUI page of the same API is available at
+<a href="https://example.com/backend/swaggerui">this address</a>.</li>
+
+<li>Deliverable D4: the source code of D0 is available as a zip file at
+<a href="https://example.com/backend/app.zip">this address</a>.</li>
+
+<li>Deliverable D5: https://github.com/AndreaFinazzi/hyp-festival</li>
+</ul>
+
+<h2 id="specification">Specification</h2>
+
+<h3 id="webarchitecture">Web Architecture</h3>
+
+<hr />
+
+<p>Describe here, with a diagram, the components of your web application
+and how they interact. Highlight which parts belong to the application
+layer, data layer or presentation layer. How did you ensure that HTML is</p>
+
+<h2 id="notrenderedserverside">not rendered server side?</h2>
+
+<p>//inserisco diagramma</p>
+
+<p>//finaz</p>
+
+<h3 id="api">API</h3>
+
+<h4 id="restcompliance">REST compliance</h4>
+
+<hr />
+
+<p>Describe here to what extent did you follow REST principles and what are
+the reasons for which you might have decided to diverge. Note, you must</p>
+
+<h2 id="notdescribethewholeapiherejustthedesigndecisions">not describe the whole API here, just the design decisions.</h2>
+
+<p>We decided to follow the REST principles in our API.
+We used GET methods which return as application/json format the data about our models and
+POST methods which insert data inside the modeles tables.</p>
+
+<p>These principles in practices are implemented with a postgres database which contains our model
+as database's tables, when the client request a service, the server calls a query to the database 
+which provides data requested, the server incapsulate data as application/json format and send back
+the response to the client.</p>
+
+<h2 id="openapiresourcemodels">#### OpenAPI Resource models</h2>
+
+<p>Describe here synthetically, which models you have introduced for</p>
+
+<h2 id="resources">resources.</h2>
+
+<p>The models that we decided to introduce for resources are:
+'performer', 'seminar', 'artistic_event', 'user', 'reservation' and 'photo'.</p>
+
+<p>GET methods are provided for every model and returns data in different ways (all data in the table, by id, 
+by relationship with other models, depends by the table) and POST methods are provided just for 'user' 
+(to allow registration and login) and 'reservation' (to allow a booking for an artistic_event by a logged user).</p>
+
+<h3 id="datamodel">Data model</h3>
+
+<hr />
+
+<p>Describe with an ER diagram the model used in the data layer of your web</p>
+
+<h2 id="applicationhowthesemaptotheopenapidatamodel">application. How these map to the OpenAPI data model?</h2>
+
+<p>//Appends the ER diagram</p>
+
+<p>The OpenAPI data model contains the same table that we have in our data layer, 
+the difference is that the data layer contains also private informations (for example, the field
+'password' in the 'user' table) and tables which are deputed only to 
+match relationship between two tables, but that are not real "entities",
+we have 'photo_gallery' and 'performance' tables which have this role.</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<h2 id="toolsused">### Tools used</h2>
+
+<p>Describe here which tools, languages and frameworks did you use for the</p>
+
+<h2 id="backendoftheapplication">backend of the application.</h2>
+
+<p>We have started preparing our OpenAPI with SwaggerUI and a Postgres database,
+after that we generated the NodeJS Server using the SwaggerUI function.
+We managed our database using PgAdmin.
+In our backend application we used some packages:
+"express JS" to launch the server, "express-session" for session management, "knex" for
+the queries, "swagger-tools" which manages requests and responses client - data layer and 
+data layer - client.</p>
+
+<h3 id="discussion">Discussion</h3>
+
+<h2 id="describehere">Describe here:</h2>
+
+<ul>
+<li>How did you make sure your web application adheres to the provided
+OpenAPI specification? Which method did you use to test all APIs</li>
+</ul>
+
+<h2 id="endpointsagainsttheexpectedresponse">    endpoints against the expected response?</h2>
+
+<ul>
+<li>We tested all GET and POST methods of our web application, with the swagger function
+accessible by "/docs" url which is connected to our backend, we verified that the response
+adheres as expected in every particular case: login and registration POST with 
+invalid credentials, GET/POST reservation without being logged, plus - of course - 
+all the others public GET.</li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Why do you think your web application adheres to common practices to
+partition a REST-based web application (static assets vs.</li>
+</ul>
+
+<h2 id="applicationdata">    application data)</h2>
+
+<ul>
+<li>We think that our web application adheres to common practices to partition 
+a REST-based web application because we contain all the data inside a database
+accessed with query methods by the server after a request that came from the client, 
+the only static assets that the client could see are about the template of our web 
+application, which doesn't contain any information that may change in the future.</li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Describe synthetically why and how did you manage session state,
+what are the state change triggering actions (e.g., POST to login</li>
+</ul>
+
+<h2 id="etc">    etc..).</h2>
+
+<ul>
+<li>We manage session state because the client must be able to book one or more
+ticket for the artistic events, so we had to implement the login/registration function.
+We used express-session and inside the "controllers" function which manages the login, 
+if the client inserted valid credentials we access to the field "req.session" and set as "true",
+a read/write field created by us that we called "logged<em>in" (accessed as "req.session.logged</em>in"), 
+and in another field called "logged<em>id" (accessed as "req.session.logged</em>id") we saved the id 
+of the user that is logged, this allow us to make the queries
+to show the private user information and to post or see the user reservations.</li>
+</ul>
+
+<hr />
+
+<ul>
+<li>Which technology did you use (relational or a no-SQL database) for</li>
+</ul>
+
+<h2 id="managingthedatamodel">    managing the data model?</h2>
+
+<ul>
+<li>We used a relational database for managing the data model.
+In order to the common rules of a relational database we have relational tables
+"performance", "photo gallery", which are deputed only to match different table informations
+(they are not real entities), we also setted as Foreign keys every column of the tables that 
+have a relationship with an element of another table.</li>
+</ul>
+
+<h2 id="otherinformation">Other information</h2>
+
+<h2 id="taskassignment">### Task assignment</h2>
+
+<p>Describe here how development tasks have been subdivided among members
+of the group, e.g.:</p>
+
+<blockquote>
+  <ul>
+  <li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
+  </ul>
+  
+  <h2 id="barworkedon">-   Bar worked on ....</h2>
+  
+  <p>Pietro Forconi: OpenAPI, backend queries, backend session-state management, backend documentation, frontend (10%).
+  Andrea Finazzi: Created database, backend queries, backend general settings, frontend (80%).
+  Marco Furio Colombo: Manages database, design and usability documentation, frontend (10%).</p>
+</blockquote>
+
+<h2 id="analysisofexistingapi">### Analysis of existing API</h2>
+
+<p>Describe here the research of (full or part of) existing APIs that are similar
+in objectives and scope to the one implemented, that have possibly guided
+implementation choices (these should not be necessarily OpenAPI
+implementations). Toy APIs (such as the Swagger's Pet Store) or the example
+shown during lectures are not a valid response.
+Use TWO or more items of the form:</p>
+
+<blockquote>
+  <p>We took (full/partial) inspiration from API <XYZ>(link) for the part of the
+  API that manages <ABC> because of <REASON>.
+  Or
+  For the part of the API that manages <ABC> we considered/studied <XYZ>(link)
+  because of <REASON> but wasn't completely fitting to our purpose because of</p>
+  
+  <h2 id="reason"><REASON>.</h2>
+</blockquote>
+
+<p>We Studied the OpenAPI language by the web site of Swagger "swagger.io", 
+we understood how to set the document by the pre-set example of the petStore (for example
+the order division of the fields "info","host", "basePath", "tags", "schemes", "path", "definitions"),
+after tht we understood from the petStore example role of the fields inside "paths" and what we didn't
+understand we searched the meanings and the functionality on the documentation avaliable at the 
+"swagger.io" website.</p>
+
+<h2 id="learningoutcome">### Learning outcome</h2>
+
+<p>What was the most important thing all the members have learned while
+developing this part of the project, what questions remained unanswered,</p>
+
+<h2 id="howyouwillusewhatyouvelearnedinyoureverydaylife">how you will use what you've learned in your everyday life?</h2>
+
+<p>We understood what are the REST principles of a web application and also that a web application
+is not the same of a web site. 
+We learned OpenAPI language from zero, we improved our sql knowledge applied in a real database, 
+how to manage the datas, we took confidence with NodeJS, HTML and CSS and we learned how to 
+integrate them together.</p>
+
+</html>
