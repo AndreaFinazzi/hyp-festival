@@ -139,8 +139,8 @@ const listFileIn = function (dir) {
 
 const getStatics = function (options = {renderer: true}) {
   let statics = {
-    styles: listFileIn(staticDir + 'assets/css/auto').filter(element => element.substr(-4) == '.css' ? element : null).map(fileName => 'assets/css/' + fileName),
-    scripts: listFileIn(staticDir + 'assets/js/auto').filter(element => element.substr(-3) == '.js' ? element : null).map(fileName => 'assets/js/' + fileName),
+    styles: listFileIn(staticDir + 'assets/css/auto').filter(element => element.substr(-4) == '.css' ? element : null).map(fileName => '/assets/css/auto/' + fileName),
+    scripts: listFileIn(staticDir + 'assets/js/auto').filter(element => element.substr(-3) == '.js' ? element : null).map(fileName => '/assets/js/auto/' + fileName),
   }
 
   if (!options.renderer || options.renderer == false) {

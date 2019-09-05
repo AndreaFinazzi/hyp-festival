@@ -89,7 +89,7 @@ $(window).load(function () {
                     } else {
                         options = {
                             title: "D'Oh!",
-                            content: 'Something went wrong, please try to reserve again.',
+                            content: 'Something went wrong, probably you already own a ticket for that event.',
                             trigger: 'focus hover',
                             placement: 'bottom'
                         }
@@ -124,8 +124,13 @@ $(window).load(function () {
             }
 
             if (options) {
-                $('#account-icon').popover(options);
-                $('#account-icon').popover('show');
+                if ($('.navbar-toggler').css('display') == 'none') {
+                    $('#account-icon').popover(options);
+                    $('#account-icon').popover('show');
+                } else {
+                    $('.navbar-toggler').popover(options);
+                    $('.navbar-toggler').popover('show');
+                }
             }
         })
         .catch(reason => console.log(reason))

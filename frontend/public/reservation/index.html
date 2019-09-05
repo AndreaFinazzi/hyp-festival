@@ -25,6 +25,8 @@
     <!-- Custom styles for this template -->
     <link href="/assets/css/main.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="/assets/css/auto/main.css">
+    
 </head>
 
 </html>
@@ -32,7 +34,7 @@
 <body>
 
     <!--header start here -->
-    <header class="header navbar fixed-top navbar-expand-md">
+    <header class="header navbar fixed-top navbar-expand-md" style="max-width: 100vw;">
         <div class="container">
             <a class="navbar-brand logo" href="/">
                 <img src="/assets/img/pulse-logo_w.png" width="100" alt="Festival" />
@@ -103,7 +105,7 @@
 <section class="pt100 pb100">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="icon_box_two">
                     <i class="ion-ios-person-outline"></i>
                     <div class="content">
@@ -117,7 +119,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="icon_box_two">
                     <i class="ion-ios-pricetag-outline"></i>
                     <div class="content">
@@ -129,8 +131,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-4">
-                    <a onclick="logout()" class=" btn btn-primary btn-rounded pull-right py-auto" style="position: absolute; bottom: 0; right: 0;">
+            <div class="col-12 col-lg-4 pt-4">
+                    <a onclick="logout()" class=" btn btn-primary btn-rounded pull-right">
                         Logout
                     </a>
             </div>
@@ -319,6 +321,8 @@
 <!-- Custom js -->
 <script src="/assets/js/shared.js"></script>
 
+
+<script src="/assets/js/auto/empty.js"></script>
 
 <script src="/assets/js/contentRenderer.js"></script>
 

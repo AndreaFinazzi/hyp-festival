@@ -1,0 +1,44 @@
+div.main-content {
+    overflow-x: hidden;
+}
+
+input[type=number] {
+    min-width: max-content;
+}
+
+/* On screens that are 992px or less, set simplified breadcumbs */
+@media screen and (max-width: 1190px) {
+
+    .breadcrumbs {
+        position: relative;
+        top: 30px;
+    }
+
+    .breadcrumbs ul:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        left: -80px;
+        bottom: 0;
+        top: 21px;
+        border-top-left-radius: 0;
+        width: 0;
+        height: 0;
+        border-bottom: 90px solid #ffffff;
+        border-left: 90px solid transparent;
+    }
+
+    .breadcrumbs ul:after {
+        display: block;
+        position: absolute;
+        right: -80px;
+        bottom: 0;
+        top: 21px;
+        border-top-left-radius: 0;
+        width: 0;
+        height: 0;
+        border-bottom: 90px solid #ffffff;
+        border-right: 90px solid transparent;
+        content: " ";
+    }
+}

@@ -30,7 +30,7 @@ module.exports.postReservation = function postReservation (req, res, next) {
 
     Reservation.postReservation(id_user, id_artistic_event, quantity)
         .then(function (response) {
-          utils.writeJson(res,{status: 200, message: "Successful operation"});
+          utils.writeJson(res, {status: 200, message: "Successful operation"});
         })
         .catch(function (response) {
           utils.writeJson(res,  {status: 401, message: "Something goes wrong"}, 401);
