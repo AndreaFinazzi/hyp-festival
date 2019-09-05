@@ -59,14 +59,7 @@ $(window).load(function () {
     }
 
     const login = function () {
-        // let xHRequest = new XMLHttpRequest();
 
-        // xHRequest.addEventListener('load', event => {
-        //     alert(event.target.responseText);
-        // })
-
-        // xHRequest.open("POST", endpoints.userRegister);
-        // xHRequest.send(formData);
         let body = '';
         let data = new FormData(inForm[0]);
 

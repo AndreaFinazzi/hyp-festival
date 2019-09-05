@@ -40,8 +40,18 @@
         </div>
         <div class="form-group">
             <label>Filter by date</label>
-            <input id='event-date-select' type='text' class="form-control py-0" style="height: 40px;"/>
-            <input id="event-date-today" type="submit" class="btn btn-md" value="Today">
+            <div class="row">
+                <div class="col-12 col-md-10 pr-0">
+                    <input id="event-date-select" type="text" class="form-control" style="height: 40px;">
+                </div>
+                <div class="col-12 col-md-2 pl-0">
+                    <input id="event-date-today" type="submit" class="btn btn-md pull-right" value="Today"
+                        style="height: 40px; width:100%">
+                </div>
+            </div>
+
+            <input id="event-filter-reset" type="submit" class="btn btn-md pull-right" value="Reset"
+                        style="height: 40px; width:100%">
         </div>
         <div id="event-box-container">
             <%# Events boxes loaded here %>

@@ -75,7 +75,8 @@ var contentRenderer = (function () {
         },
 
         renderReservationModal: function (endpoint) {
-            this.renderJoinObject(endpoint, endpoints.getPerformersByEvent, 'events/reservation_modal', 'div.main-content', (items) => {
+            url = new URLSearchParams(window.location.search);
+            this.renderJoinObject(endpoint, endpoints.getPerformerByEvent, 'events/reservation_modal', 'div.main-content', (items) => {
                 $('#confirm-reservation').click(function() {
                     let quantity = $('#quantity-selector').val();
                     fetch('/api/reservation', {
@@ -87,7 +88,10 @@ var contentRenderer = (function () {
                         redirect: 'follow'
                     })
                     .then(response => {
-                        window.location = response.url;
+                        if (url.has('id'))
+                            window.location = "&type=reservation&success=true";
+                        else
+                            window.location = "?type=reservation&success=true";
                     })
                     .catch(result => {
                         console.log(result.text());

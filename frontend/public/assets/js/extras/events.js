@@ -27,6 +27,12 @@ $(document).ready(() => {
             $('#event-date-select').val(today);
             $('#event-date-select').trigger('change');
         })
+
+        $('#event-filter-reset').click(function (event) {
+            $('#event-type-select').val('');
+            $('#event-date-select').val('');
+            renderEventBox(endpoints.getArtisticEventAll);
+        })
     }
 })
 

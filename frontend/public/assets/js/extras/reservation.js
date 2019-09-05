@@ -20,7 +20,7 @@ logout = function() {
     .then(response => {
         window.location = response.url;
     })
-    $(window).dispatchEvent(new Event('load'));
+    $(window).trigger('load');
 }
 
 const renderReservations = function (endpoint, callback) {

@@ -4,8 +4,13 @@
 'use strict';
 $(document).ready(() => {
     contentRenderer.renderPageContent(endpoints.getContentByName + 'presentation', 'main');
+    initCalendar();
     initSlider();
 });
+
+const initCalendar = function () {
+    contentRenderer.renderJoinObject(endpoints.getArtisticEventAll, endpoints.getPerformerByEvent, 'calendar_box', '#calendar-box-container');
+}
 
 const initSlider = function () {
     renderSlider(endpoints.getSeminarAll, function (items) {
